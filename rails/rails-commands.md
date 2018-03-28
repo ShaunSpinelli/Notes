@@ -1,7 +1,7 @@
 # Rails Command line cheatsheet 
 Create new rails app
 
-```ruby
+```
 $ rails new name
 ```
 
@@ -29,7 +29,7 @@ Adding extra colum to database _eg:_ adding a _brand_ to _product_ model
 ```
 $ rails g migration addBrandToProduct brand:string
 ```
-This generates a migrations file, update the databse `$ rails db:migrate`
+This generates a migration file, update the databse with `$ rails db:migrate`
 
 Removing columns is a similar process
 
@@ -37,7 +37,7 @@ Removing columns is a similar process
 $ rails g migration DeleteBrandFromProduct brand:string
 ```
 
-update the databse `$ rails db:migrate`
+Update the databse `$ rails db:migrate`
 
 ## Linking between models
 
