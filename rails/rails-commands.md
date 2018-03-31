@@ -7,7 +7,7 @@ $ rails new name
 
 Starts rails server
 
-```bash
+```
 $ rails s
 ```
 
@@ -56,13 +56,11 @@ Also need update database to add forgein key to resturant
 ```
 $ generate migration AddCityRefToResturants city:references
 ```
- which creates a new migration file. Then run 
+ which creates a new migration file. Then run to update your database
 
 ```
 $ rails db:migrate
 ```
-
-to update your database
 
 ## Rails console
 
