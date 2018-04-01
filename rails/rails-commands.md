@@ -39,6 +39,15 @@ $ rails g migration DeleteBrandFromProduct brand:string
 
 Update the databse `$ rails db:migrate`
 
+## Set up
+
+setting up home page
+```ruby
+root "controller#method"
+```
+
+adding users etc see devise docs
+
 ## Linking between models
 
 *Eg*: Linking city model  to resturant model where city has mutiple resturants 
@@ -69,8 +78,12 @@ To enter console
 ```
 $ rails console
 ```
+select specific model
 
-user.all
+```bash
+$ user.all
+```
+
 rails acive record middleman between layer and db
 
 
