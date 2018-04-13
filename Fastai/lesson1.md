@@ -13,7 +13,32 @@
 
 When we backpropagate we use our training set loss 
 
-If our validation loss is greater then out training loss our model maybe overfitting. 
+If our validation loss is greater then out training loss our model maybe overfitting.
+
+## freezing layers
+
+* frozen - not being updated
+* unfreeze - being updated
+
+
+
+only traing the last one/two layers as the first pretrained convolution/layers have been trained already and are very goood at recognising basic shapes and features. when we want to start fine tuning out network we can start un freezing layer by layer.
+
+
+create an arry of learning rates for each group of layers super low learning rates for layers at the front , middle learning rates for middle layers and bigger learning rates for the last layers.
+
+
+## .fit method
+
+**Cylcle_len**- reset learning rate after _n_ number of epochs **cycle_len = n**
+
+decrease our learning rate as we train _learning rate annealing_ we use **cosine-annealing**. We can use cosine-annealing to find a more generalise minima by doing _CA_ 3 times over a number of iterations. 
+ 
+**_Insert Image from lesson_**.
+
+**cycle_mult**  doubles length of cycle after each cycle
+
+**_Insert Image from lesson_**.
 
 ## Choosing a leraning rate
 
