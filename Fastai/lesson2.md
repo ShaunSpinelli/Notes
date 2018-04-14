@@ -1,4 +1,4 @@
-#Dog Breeds
+# Dog Breeds
 
 * bacth size, start at 64 till out of memoery, then half , and half and half and so on
 
