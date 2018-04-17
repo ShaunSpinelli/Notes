@@ -31,12 +31,19 @@ $$s(x)= \frac{e^x}{e^x+1}$$
 
 ![Sigmoid Fucntion Graph](https://en.wikipedia.org/wiki/File:Logistic-curve.svg)
 
+**Structe of Data**
+---
+* unstructed -all the data is the same thing eg pictures sounds waves
+
+* structured - database type of structure
+
 
 
 ## Check out
 
 * keras lesson 1 to see lesson one wrtten using keras
 * multi dimensional array
+* convolution slide
 
 ## shift tab to see paramaters of function
 
