@@ -14,12 +14,12 @@
 
 When we backpropagate we use our training set loss 
 
-If our validation loss is greater then out training loss our model maybe overfitting.
+If our validation loss is greater then out training loss our model is **overfitting**.
 
 ### freezing layers
 
-* frozen - not being updated
-* unfreeze - being updated
+* **frozen** - not being updated
+* **unfreeze** - being updated
 
 
 
