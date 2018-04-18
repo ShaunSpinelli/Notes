@@ -29,7 +29,7 @@ _insert image of softmax eq_
 
 $$s(x)= \frac{e^x}{e^x+1}$$
 
-![Sigmoid Fucntion Graph](https://en.wikipedia.org/wiki/File:Logistic-curve.svg)
+![Sigmoid Fucntion Graph](https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Logistic-curve.svg/320px-Logistic-curve.svg.png)
 
 **Structe of Data**
 ---
