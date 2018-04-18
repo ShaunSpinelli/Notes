@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Rails Command line cheatsheet</title>
+    <link type="text/css" rel="stylesheet" href="../assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="rails-command-line-cheatsheet"><a class="header-link" href="#rails-command-line-cheatsheet"></a>Rails Command line cheatsheet</h1>
+<p>Create new rails app</p>
+<pre class="hljs"><code>$ rails <span class="hljs-keyword">new</span> name</code></pre><p>Starts rails server</p>
+<pre class="hljs"><code><span class="hljs-variable">$ </span>rails s</code></pre><p>Create scaffold which will create  model, view ,controller etc etc etc</p>
+<pre class="hljs"><code>$ rails g scaffold <span class="hljs-built_in">Product</span> <span class="hljs-keyword">name</span> description:text price:<span class="hljs-keyword">decimal</span> brand</code></pre><p>Update database with new model. </p>
+<pre class="hljs"><code><span class="hljs-variable">$ </span>rails <span class="hljs-symbol">db:</span>migrate</code></pre><h2 id="updating-database"><a class="header-link" href="#updating-database"></a>Updating database</h2>
+<p>Adding extra colum to database <em>eg:</em> adding a <em>brand</em> to <em>product</em> model</p>
+<pre class="hljs"><code>$ rails g migration addBrandToProduct brand:<span class="hljs-built_in">string</span></code></pre><p>This generates a migration file, update the databse with <code>$ rails db:migrate</code></p>
+<p>Removing columns is a similar process</p>
+<pre class="hljs"><code>$ rails g migration DeleteBrandFromProduct brand:<span class="hljs-built_in">string</span></code></pre><p>Update the databse <code>$ rails db:migrate</code></p>
+<h2 id="set-up"><a class="header-link" href="#set-up"></a>Set up</h2>
+<p>setting up home page</p>
+<pre class="hljs"><code>root <span class="hljs-string">"controller#method"</span></code></pre><p>adding users etc see devise docs</p>
+<h2 id="linking-between-models"><a class="header-link" href="#linking-between-models"></a>Linking between models</h2>
+<p><em>Eg</em>: Linking city model  to resturant model where city has mutiple resturants </p>
+<pre class="hljs"><code>$ rails g scafold city <span class="hljs-built_in">name</span>:<span class="hljs-built_in">string</span>
+$ rails g scaffold resturant <span class="hljs-built_in">name</span>:<span class="hljs-built_in">string</span> city:belongs_to</code></pre><p>If you don&#39;t relate them initally when you generate them you can later </p>
+<p><code>belongs_to :city</code> in resturant class and <code>has_many :resturants</code> in city class.</p>
+<p>Also need update database to add forgein key to resturant</p>
+<pre class="hljs"><code>$ <span class="hljs-keyword">generate</span> migration AddCityRefToResturants city:references</code></pre><p> which creates a new migration file. Then run to update your database</p>
+<pre class="hljs"><code><span class="hljs-variable">$ </span>rails <span class="hljs-symbol">db:</span>migrate</code></pre><h2 id="rails-console"><a class="header-link" href="#rails-console"></a>Rails console</h2>
+<p>To enter console</p>
+<pre class="hljs"><code>$ rails <span class="hljs-built_in">console</span></code></pre><p>select specific model</p>
+<pre class="hljs"><code>$ user.all</code></pre><p>rails acive record middleman between layer and db</p>
+<pre class="hljs"><code><span class="hljs-variable">$ </span>user.sum(<span class="hljs-symbol">:points</span>)
+<span class="hljs-variable">$ </span>user.maximum(<span class="hljs-symbol">:points</span>)</code></pre><h2 id="extras"><a class="header-link" href="#extras"></a>Extras</h2>
+<p>Show all routes in app</p>
+<pre class="hljs"><code><span class="hljs-variable">$ </span>rails routes</code></pre><p>Add data manually to Db from dB\seeds.rb</p>
+<pre class="hljs"><code><span class="hljs-variable">$ </span>rails <span class="hljs-symbol">db:</span>seed</code></pre>    </article>
+  </body>
+</html>

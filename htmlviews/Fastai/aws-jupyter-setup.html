@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Connectiong to EC2 Instance</title>
+    <link type="text/css" rel="stylesheet" href="../assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><p>#</p>
+<h2 id="connectiong-to-ec2-instance"><a class="header-link" href="#connectiong-to-ec2-instance"></a>Connectiong to EC2 Instance</h2>
+<p>Run from fast ai folder where pem file is stored</p>
+<pre class="hljs"><code>$ ssh -i your-aws-key-pair-filename.pem -L 9999:127.0.0.1:8888 ubuntu@ec2-34-216-178-210.us-west-2.compute.amazonaws.com</code></pre><p>note if there is an error for unsecured pem file
+run </p>
+<pre class="hljs"><code>$ chmod 400 your-aws-key-pair-filename.pem</code></pre><h3 id="should-now-be-connect-to-ec2-instance"><a class="header-link" href="#should-now-be-connect-to-ec2-instance"></a>Should now be connect to EC2 Instance</h3>
+<h2 id="openning-jupyter-note-book-on-aws"><a class="header-link" href="#openning-jupyter-note-book-on-aws"></a>Openning Jupyter Note Book on AWS</h2>
+<p>Activate python environemnt</p>
+<pre class="hljs"><code>$ <span class="hljs-built_in">source</span> activate python3</code></pre><pre class="hljs"><code>$ jupyter notebook</code></pre><p>Copy url and change localhost to 9999 when you paste it in the browser</p>
+    </article>
+  </body>
+</html>

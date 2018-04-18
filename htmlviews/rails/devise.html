@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Devise</title>
+    <link type="text/css" rel="stylesheet" href="../assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="devise"><a class="header-link" href="#devise"></a>Devise</h1>
+<p> Add devise gem</p>
+<pre class="hljs"><code>$ <span class="hljs-keyword">bundle </span><span class="hljs-keyword">add </span>devise</code></pre><p>Add devise to project and follow instruction in terminal</p>
+<pre class="hljs"><code>$ rails g devise:<span class="hljs-keyword">install</span></code></pre><p>Create a model </p>
+<p><em>model</em> is normally <em>user</em> or <em>admin</em></p>
+<pre class="hljs"><code><span class="hljs-symbol">$</span> rails g devise <span class="hljs-keyword">Model</span></code></pre><p>new model now  contains
+1) etc
+2) etc
+3) etc</p>
+<p>then run <code>$ rails db:migrate</code> to update database</p>
+<p>Views for the user are being run in the background to have control over these views and add
+them to the project run </p>
+<pre class="hljs"><code> <span class="hljs-variable">$ </span>rails g <span class="hljs-symbol">devise:</span>views</code></pre><h2 id="working-with-the-_user_"><a class="header-link" href="#working-with-the-_user_"></a>Working with the <em>user</em></h2>
+<p>set up a controller with user authentication.Add this to controller</p>
+<pre class="hljs"><code>before_action <span class="hljs-symbol">:authenticate_user!</span></code></pre>    </article>
+  </body>
+</html>

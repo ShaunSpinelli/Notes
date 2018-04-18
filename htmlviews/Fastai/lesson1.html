@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Lesson 1- Images Classification using CNN</title>
+    <link type="text/css" rel="stylesheet" href="../assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="lesson-1--images-classification-using-cnn"><a class="header-link" href="#lesson-1--images-classification-using-cnn"></a>Lesson 1- Images Classification using CNN</h1>
+<ul class="list">
+<li>classifier is looking at the a sqaure in the middle of the images
+*</li>
+</ul>
+<h2 id="definitions"><a class="header-link" href="#definitions"></a>Definitions</h2>
+<ul class="list">
+<li><strong>Training Set Loss</strong> - Error from on training set</li>
+<li><strong>Validation Loss</strong> -  Error from on validation set</li>
+<li><strong>Accuracy</strong> - correct prediction from our test set</li>
+<li><strong>TTA</strong> - test time augmentation running augmented images throw cnn to see how well its good</li>
+</ul>
+<p>When we backpropagate we use our training set loss </p>
+<p>If our validation loss is greater then out training loss our model is <strong>overfitting</strong>.</p>
+<h3 id="freezing-layers"><a class="header-link" href="#freezing-layers"></a>freezing layers</h3>
+<ul class="list">
+<li><strong>frozen</strong> - not being updated</li>
+<li><strong>unfreeze</strong> - being updated</li>
+</ul>
+<p>only traing the last one/two layers as the first pretrained convolution/layers have been trained already and are very goood at recognising basic shapes and features. when we want to start fine tuning out network we can start un freezing layer by layer.</p>
+<p>We can create an arry of learning rates for each group of layers super low learning rates for layers at the front , middle learning rates for middle layers and bigger learning rates for the last layers.</p>
+<h3 id=".fit-method"><a class="header-link" href="#.fit-method"></a>.fit method</h3>
+<p><strong>Cylcle_len</strong>- reset learning rate after _n_ number of epochs <strong>cycle_len = n</strong></p>
+<p>decrease our learning rate as we train <em>learning rate annealing</em> we use <strong>cosine-annealing</strong>. We can use cosine-annealing to find a more generalise minima by doing _CA_ n times over a number of iterations.</p>
+<ul class="list">
+<li>If your cycle length is to short, wont find a good spot, it will keep popping out but as you go on you want it to do more and more exploring <strong>need more reasearch</strong> </li>
+</ul>
+<p><strong><em>Insert Image from lesson 1</em></strong></p>
+<p><strong>cycle_mult</strong>  doubles length of cycle after each cycle</p>
+<p><strong><em>Insert Image from lesson 1</em></strong></p>
+<h3 id="inputs"><a class="header-link" href="#inputs"></a>inputs</h3>
+<ul class="list">
+<li>inputs to model has to be sqaure</li>
+<li>just using a square on the validation set, takes the height then crops out the rest</li>
+</ul>
+<h3 id="choosing-a-leraning-rate"><a class="header-link" href="#choosing-a-leraning-rate"></a>Choosing a leraning rate</h3>
+<p><em>lrf</em>  uses minibatches to find the optimal leraning rate  </p>
+<h3 id="improving-model-through-data-augmentation"><a class="header-link" href="#improving-model-through-data-augmentation"></a>Improving Model Through Data Augmentation</h3>
+<h3 id="conufsion-matrix"><a class="header-link" href="#conufsion-matrix"></a>conufsion matrix</h3>
+<ul class="list">
+<li>lets us compare our prediction lables and true lables</li>
+</ul>
+<h2 id="steps-to-train-an-image-classifier"><a class="header-link" href="#steps-to-train-an-image-classifier"></a>Steps To Train an image Classifier</h2>
+<hr>
+<ol class="list">
+<li>Enable data augmentation, and precompute=True</li>
+<li>Use lr_find() to find highest learning rate where loss is still clearly improving</li>
+<li>Train last layer from precomputed activations for 1-2 epochs</li>
+<li>Train last layer with data augmentation (i.e. precompute=False) for 2-3 epochs with cycle_len=1</li>
+<li>Unfreeze all layers</li>
+<li>Set earlier layers to 3x-10x lower learning rate than next higher layer</li>
+<li>Use lr_find() again</li>
+<li>Train full network with cycle_mult=2 until over-fitting</li>
+</ol>
+    </article>
+  </body>
+</html>
