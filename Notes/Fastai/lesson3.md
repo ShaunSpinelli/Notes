@@ -1,6 +1,8 @@
 # Lesson 3
 #start at 1:55
 
+
+
 Content start at 45min
 
 * **rectified linear unit**(relu )- max(0,sum) in excel
