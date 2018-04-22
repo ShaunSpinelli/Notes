@@ -31,9 +31,12 @@ We can create an arry of learning rates for each group of layers super low learn
 
 ### .fit method
 
-**Cylcle_len**- reset learning rate after _n_ number of epochs **cycle_len = n**
+**Cylcle_len**
 
-decrease our learning rate as we train _learning rate annealing_ we use **cosine-annealing**. We can use cosine-annealing to find a more generalise minima by doing _CA_ n times over a number of iterations.
+* decrease our learning rate as we train _learning rate annealing_ we use **cosine-annealing** when ever we add ```cycle_len=``` to the .fit method params. We can use cosine-annealing to find a more generalise minima by doing _CA_ n times over a number of iterations.
+
+* reset learning rate after _n_ number of epochs **cycle_len = n**
+
 
 
 * If your cycle length is to short, wont find a good spot, it will keep popping out but as you go on you want it to do more and more exploring **need more reasearch** 
