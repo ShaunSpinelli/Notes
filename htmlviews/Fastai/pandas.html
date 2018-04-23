@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Pandas</title>
+    <link type="text/css" rel="stylesheet" href="../assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="pandas"><a class="header-link" href="#pandas"></a>Pandas</h1>
+<p>Displays All classes</p>
+<pre class="hljs"><code>data.classes</code></pre><p>Displays test file name</p>
+<pre class="hljs"><code>data.test_ds.fnames</code></pre><p>Predictions returned as log so need to unlog them to get probablities</p>
+<pre class="hljs"><code>log_preds,y = leran.TTA(is_test=<span class="hljs-keyword">True</span>)
+probs = np.exp(log_preds)</code></pre><p>matrix of (files,classes)</p>
+<pre class="hljs"><code>probs.shape</code></pre><p>Use pandas to write the text file</p>
+<pre class="hljs"><code>df = pd.DataFrame(probs)
+df.columns = data.classes</code></pre><pre class="hljs"><code>df.insert(<span class="hljs-number">0</span>, <span class="hljs-string">'id'</span>,[o <span class="hljs-keyword">for</span> o <span class="hljs-keyword">in</span> data.test_ds.fnames])</code></pre><p>view data fram</p>
+<pre class="hljs"><code>df.head()</code></pre><p>Create file</p>
+<pre class="hljs"><code>SUBM = f<span class="hljs-string">'{PATH}subm'</span>
+os.makedirs(SUBM, exist_ok=<span class="hljs-keyword">True</span>)
+df.to_csv(f<span class="hljs-string">'{SUBM}subm.gz'</span>, compression=<span class="hljs-string">'gzip'</span>,index=<span class="hljs-keyword">False</span>)</code></pre><p>Gives link for you to click and download folder</p>
+<pre class="hljs"><code>FileLink(f<span class="hljs-string">'{SUBM}subm.gz'</span>)</code></pre>    </article>
+  </body>
+</html>
