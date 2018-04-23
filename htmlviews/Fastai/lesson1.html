@@ -31,8 +31,13 @@
 <p>only traing the last one/two layers as the first pretrained convolution/layers have been trained already and are very goood at recognising basic shapes and features. when we want to start fine tuning out network we can start un freezing layer by layer.</p>
 <p>We can create an arry of learning rates for each group of layers super low learning rates for layers at the front , middle learning rates for middle layers and bigger learning rates for the last layers.</p>
 <h3 id=".fit-method"><a class="header-link" href="#.fit-method"></a>.fit method</h3>
-<p><strong>Cylcle_len</strong>- reset learning rate after _n_ number of epochs <strong>cycle_len = n</strong></p>
-<p>decrease our learning rate as we train <em>learning rate annealing</em> we use <strong>cosine-annealing</strong>. We can use cosine-annealing to find a more generalise minima by doing _CA_ n times over a number of iterations.</p>
+<p><strong>Cylcle_len</strong></p>
+<ul class="list">
+<li><p>decrease our learning rate as we train <em>learning rate annealing</em> we use <strong>cosine-annealing</strong> when ever we add <code>cycle_len=</code> to the .fit method params. We can use cosine-annealing to find a more generalise minima by doing _CA_ n times over a number of iterations.</p>
+</li>
+<li><p>reset learning rate after _n_ number of epochs <strong>cycle_len = n</strong></p>
+</li>
+</ul>
 <ul class="list">
 <li>If your cycle length is to short, wont find a good spot, it will keep popping out but as you go on you want it to do more and more exploring <strong>need more reasearch</strong> </li>
 </ul>
