@@ -16,3 +16,4 @@ $ fg
 
 then press tab to select jupyter note book
 
+# Short Cuts

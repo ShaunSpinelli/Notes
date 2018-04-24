@@ -1,5 +1,16 @@
 # Lesson 4
 
+**DROP OUT**
+higher vs lower p value
+
+**Structured Data**
+Stuff youd find in data tables
+catergorical vs continuous 
+
+better to change to catergorical
+
+
+
 ## Readings
 [Learnig rates](https://techburst.io/improving-the-way-we-work-with-learning-rate-5e99554f163b)
 
