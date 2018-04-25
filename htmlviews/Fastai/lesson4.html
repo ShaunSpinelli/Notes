@@ -10,8 +10,21 @@
   </head>
   <body>
     <article class="markdown-body"><h1 id="lesson-4"><a class="header-link" href="#lesson-4"></a>Lesson 4</h1>
-<p><strong>DROP OUT</strong>
-higher vs lower p value</p>
+<p>We&#39;ve been added two fully connected layer by default</p>
+<p>If we want to add a custom amount we can by adding <code>xtra_fc=[]</code> when we set up our learn model.</p>
+<pre class="hljs"><code>learn = ConvLearner.pretrained(arch,data, xtra_fc[])</code></pre><p><strong>DROP OUT</strong></p>
+<p>Default is 0.25 for first and 0.5 by second</p>
+<ul class="list">
+<li><p>solved genrealising</p>
+</li>
+<li><p>each mini bacth throw a random set of activations</p>
+</li>
+</ul>
+<p>when setting up our learn model</p>
+<pre class="hljs"><code>learn = ConvLearner.pretrained(arch,data, ps=<span class="hljs-number">0.5</span>, precompute=<span class="hljs-keyword">True</span>)</code></pre><p>In this example <code>ps = 0.5</code> the probability of deleting activation is 50% (turn off half) can pass in array for ps value for each layer.</p>
+<ul class="list">
+<li>higher vs lower p value</li>
+</ul>
 <p><strong>Structured Data</strong>
 Stuff youd find in data tables
 catergorical vs continuous </p>
