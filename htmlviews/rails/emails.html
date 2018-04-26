@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Email</title>
+    <link type="text/css" rel="stylesheet" href="../assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="email"><a class="header-link" href="#email"></a>Email</h1>
+<p>What is a mailer</p>
+<p><strong><em>Create a mailer</em></strong></p>
+<pre class="hljs"><code>$ rails g mailer UserMailer</code></pre><p>where:</p>
+<p><code>UserMailer</code> is the name of the mailer.</p>
+<p>In the created <code>user_mailer.rb file</code> we can set up a default from and but in all of our different mailer methods.</p>
+<pre class="hljs"><code>default <span class="hljs-symbol">:from</span> =&gt; <span class="hljs-string">'noreply@foo.com'</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">send_signup_email</span><span class="hljs-params">(user)</span></span>
+        @user = user
+        mail(<span class="hljs-symbol">:to</span> =&gt; @user.email, <span class="hljs-symbol">:subject</span> =&gt; <span class="hljs-string">'Thanks for signing up'</span>)
+    <span class="hljs-keyword">end</span>
+</code></pre><p>We have created a <code>send_signup_email()</code> method that take in a user as a parameter.</p>
+<p>The mail method sets who we are sending it to and what will appear in the title. The actual body and content will be rendered from our mailer views. The mailer method will look for an .html.erb fille with the same name as it. In thus instance a file called <code>send_signup_email.html.erb</code></p>
+<p>You can think of the mailer as a type of controller.</p>
+<p>As an example to show how we envoke this method we send an email after a user creates an account by running the method in the <strong><em>user model</em></strong>.</p>
+<pre class="hljs"><code>after_create <span class="hljs-symbol">:send_welcome</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">send_welcome</span></span>
+    add_role <span class="hljs-symbol">:author</span>
+    UserMailer.send_signup_email(<span class="hljs-keyword">self</span>).deliver
+  <span class="hljs-keyword">end</span></code></pre><p>Using the <code>UserMailer</code> we created we run the <code>send_signup_email</code> method and <code>.delveier</code> .</p>
+<p>Using a service like <a href="https://app.sendgrid.com/">Send Grid</a> we can sent up our mailer <code>config\environments</code> files by setting up an action mailer base</p>
+<pre class="hljs"><code> ActionMailer::Base.smtp_settings = {
+    <span class="hljs-symbol">:user_name</span> =&gt; ENV[<span class="hljs-string">'SENDGRID_USERNAME'</span>],
+    <span class="hljs-symbol">:password</span> =&gt; ENV[<span class="hljs-string">'SENDGRID_PASSWORD'</span>],
+    <span class="hljs-symbol">:domain</span> =&gt; <span class="hljs-string">'yourdomain.com'</span>,
+    <span class="hljs-symbol">:address</span> =&gt; <span class="hljs-string">'smtp.sendgrid.net'</span>,
+    <span class="hljs-symbol">:port</span> =&gt; <span class="hljs-number">587</span>,
+    <span class="hljs-symbol">:authentication</span> =&gt; <span class="hljs-symbol">:plain</span>,
+    <span class="hljs-symbol">:enable_starttls_auto</span> =&gt; <span class="hljs-literal">true</span>
+  }</code></pre><p><code>user_name</code> and  <code>password</code> are being read from a .env file see <a href="https://github.com/bkeepers/dotenv">DOTENV</a></p>
+    </article>
+  </body>
+</html>

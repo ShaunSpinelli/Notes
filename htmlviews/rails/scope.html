@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Scopes</title>
+    <link type="text/css" rel="stylesheet" href="../assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="scopes"><a class="header-link" href="#scopes"></a>Scopes</h1>
+<p>Scoping allows you to specify commonly-used queries which can be referenced as a method which will
+return an <code>ActiveRecord::Relation</code></p>
+<p>In an example Product model with a product name attrubute we would put this inside the <em>product.rb</em> file(product model)</p>
+<pre class="hljs"><code>scope(<span class="hljs-symbol">:product_name</span>, -&gt; (name) { where(<span class="hljs-string">"name like ?"</span>, <span class="hljs-string">"%<span class="hljs-subst">#{name}</span>%"</span>)})</code></pre><p>where:</p>
+<ul class="list">
+<li><p><code>:product_name</code> is the method</p>
+</li>
+<li><p><code>(name)</code> is the argument we are passing</p>
+</li>
+</ul>
+<p>Every thing in the {} would be our Active Record Query <code>where(&quot;name like ?&quot;, &quot;%#{name}%&quot;)</code> . </p>
+<p>The <strong><em>%</em></strong> is a wild card. So putting a <strong><em>%</em></strong> on the start and end of the word will return everything that starts,ends and contains that word. </p>
+<p><strong><em>eg:</em></strong> </p>
+<ul class="list">
+<li><p><code>%word%</code> would return hword , hwordh , word , wordh</p>
+</li>
+<li><p><code>%word</code> would return hword, word</p>
+</li>
+<li><p><code>word%</code> would return word , wordh</p>
+</li>
+<li><p><code>word</code> would return word</p>
+</li>
+</ul>
+<p>calling out function</p>
+<pre class="hljs"><code>Product.product_name(<span class="hljs-string">"some name"</span>)</code></pre><p>Ths would evoke our active record query stated in our Product class.</p>
+<p><strong><em> Implementing this in Rails to create a search function</em></strong></p>
+<p>Searching a Product model</p>
+<pre class="hljs"><code>scope(<span class="hljs-symbol">:product_name</span>, -&gt; (name) { where(<span class="hljs-string">"name like ?"</span>, <span class="hljs-string">"%<span class="hljs-subst">#{name}</span>%"</span>)})
+scope(<span class="hljs-symbol">:description</span>, -&gt; (description) { where(<span class="hljs-string">"description like ?"</span>, <span class="hljs-string">"%<span class="hljs-subst">#{description}</span>%"</span>)})
+scope(<span class="hljs-symbol">:price</span>, -&gt; (price) { where <span class="hljs-symbol">price:</span> price })</code></pre><p>In our products controller we need to allow the params through, create method under <code>private</code></p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">filtering_params</span><span class="hljs-params">(params)</span></span>
+   params.slice(<span class="hljs-symbol">:product_name</span>, <span class="hljs-symbol">:description</span>, <span class="hljs-symbol">:price</span>)
+<span class="hljs-keyword">end</span></code></pre><p>In our index method</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">index</span></span>
+    @products = Product.all
+    filtering_params(params).each <span class="hljs-keyword">do</span> <span class="hljs-params">|key, value|</span>
+      @products = @products.public_send(key, value) <span class="hljs-keyword">if</span> value.present?
+    <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span></code></pre><p>We iterate through the params dictionary and  to get key value pairs and pass them into the <code>.public_send()</code> method which evokes the method <em>key</em> and passes in the attribute <em>value</em>. This will then run the corresponding method defined in our products class and return an  <code>ActiveRecord::Relation</code> which we save to the <code>@products</code> model</p>
+<p>Do get these params we can pass in a form to the index view that takes in the <strong><em>:product_name, :description, :price</em></strong></p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"panel panel-default"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"panel-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-inline"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"product_name"</span>&gt;</span>Name:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"product_name"</span>  <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"description"</span>&gt;</span>Description:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"description"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"price"</span>&gt;</span>Price:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"price"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Filter"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-default"</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>    </article>
+  </body>
+</html>
