@@ -29,10 +29,50 @@
 Stuff youd find in data tables
 catergorical vs continuous </p>
 <p>better to change to catergorical</p>
-<h2 id="readings"><a class="header-link" href="#readings"></a>Readings</h2>
-<p><a href="https://techburst.io/improving-the-way-we-work-with-learning-rate-5e99554f163b">Learnig rates</a></p>
-<p><a href="https://medium.com/38th-street-studios/exploring-stochastic-gradient-descent-with-restarts-sgdr-fa206c38a74e">Gradient Decent with restarts</a></p>
-<p><a href="https://towardsdatascience.com/transfer-learning-using-differential-learning-rates-638455797f00">Transfer Learning/Differential LR</a></p>
+<pre class="hljs"><code>md = ColumnarModelData.from_data_frame(PATH, val_idx, df, yl.astype(np.float32), cat_flds=cat_vars, bs=<span class="hljs-number">128</span>, test_df=df_test)</code></pre><ul class="list">
+<li><p><code>md</code> = model data</p>
+</li>
+<li><p><code>df</code>= data frame -&gt; independant variable</p>
+</li>
+<li><p><code>yl</code> = dependent</p>
+</li>
+<li><p><code>cat_flds=cat_vars</code> = what do we want treated as catorgarical data</p>
+</li>
+</ul>
+<pre class="hljs"><code>m = md.get_learner(emb_szs, len(df.columns)-len(cat_vars),<span class="hljs-number">0.04</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1000</span>,<span class="hljs-number">500</span>], [<span class="hljs-number">0.001</span>,<span class="hljs-number">0.01</span>], y_range=y_range)</code></pre><ul class="list">
+<li><p><code>m</code> is our model</p>
+</li>
+<li><p>emb_szs is see <strong>catergorical</strong> section</p>
+</li>
+<li><p><strong>num of continous variables</strong>, just pass in all the df coloumns and subtract the catorigicl varibles</p>
+</li>
+<li><p>0.04 is drop out for embediding matrix</p>
+</li>
+<li><p>1 is how many outputs do we want (we want sales)</p>
+</li>
+<li><p>activations in [first,second] linear layer</p>
+</li>
+<li><p>drop out in [first,second] linear layer</p>
+</li>
+</ul>
+<p><strong>Catergorical</strong>
+create a new matrix <em>53:36min lesson 4</em> eg: days of the weeek. if we created a new 4x7 vectore matrix. Sunday will be represented by 4 floating point numbers, initially picked at random.</p>
+<p>turned catogericl in a floating point vector  so we can update them when we use back prob</p>
+<p>this is called an <strong>embedding matrix</strong> distributed representation.</p>
+<p>finding the right embedding size. cardiality/2 but less then 50 . Which means, however many catogories you have divide by two, if its greater then 50 , make it 50.</p>
+<p>49 drw some iamges from that</p>
+<h1 id="naturaltal-langauge-processing(nlp)"><a class="header-link" href="#naturaltal-langauge-processing(nlp)"></a>Naturaltal Langauge Processing(NLP)</h1>
+<p>Tokenization breaks words into tokens.</p>
+<p>fastai uses <a href="https://spacy.io/usage/spacy-101">spacy tokenisor</a>.</p>
+<p>create a field, how we will preprocess text.</p>
+<pre class="hljs"><code>    TEXT = data.Field(lower=<span class="hljs-keyword">True</span>, tokenize=<span class="hljs-string">"spacy"</span>)</code></pre><p><code>lower</code> lower case</p>
+<p><code>tokenize</code> what tokenizer we are using</p>
+<p>while creating our model data</p>
+<p><code>min_freq=n</code> is any words the occur less then <code>n</code> times dont treat as work.</p>
+<p><code>bptt</code> baack propagation through time . how long of a sentence do we send through to the gpu each time.</p>
+<p><strong><em>vocab</em></strong>, what are the list f unique words that appear.</p>
+<p>map a word to an integer</p>
+<p>#restart lesson at 1:50</p>
     </article>
   </body>
 </html>
