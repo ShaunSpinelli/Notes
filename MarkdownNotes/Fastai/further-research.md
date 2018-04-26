@@ -19,4 +19,10 @@ If our validation loss and training set loss are very similar does that mean our
 
 [Visualing learning rate and batch size](https://miguel-data-sc.github.io/2017-11-05-first/)
 
-[ResNet](http://teleported.in/posts/decoding-resnet-architecture/   )
+[ResNet](http://teleported.in/posts/decoding-resnet-architecture/)
+
+[Learnig rates](https://techburst.io/improving-the-way-we-work-with-learning-rate-5e99554f163b)
+
+[Gradient Decent with restarts](https://medium.com/38th-street-studios/exploring-stochastic-gradient-descent-with-restarts-sgdr-fa206c38a74e)
+
+[Transfer Learning/Differential LR](https://towardsdatascience.com/transfer-learning-using-differential-learning-rates-638455797f00)
