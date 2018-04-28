@@ -6,7 +6,7 @@
 
 * kaggl-cli on git hub
 
-##  Python Libaries
+## Python Libaries
 
 * python pandas
 
