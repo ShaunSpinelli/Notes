@@ -12,12 +12,11 @@
     <article class="markdown-body"><h1 id="lesson-4"><a class="header-link" href="#lesson-4"></a>Lesson 4</h1>
 <p>We&#39;ve been added two fully connected layer by default</p>
 <p>If we want to add a custom amount we can by adding <code>xtra_fc=[]</code> when we set up our learn model.</p>
-<pre class="hljs"><code>learn = ConvLearner.pretrained(arch,data, xtra_fc[])</code></pre><p><strong>DROP OUT</strong></p>
-<p>Default is 0.25 for first and 0.5 by second</p>
+<pre class="hljs"><code>learn = ConvLearner.pretrained(arch,data, xtra_fc[])</code></pre><p><strong>DROP OUT</strong> - Default is 0.25 for first and 0.5 for second layer.</p>
 <ul class="list">
-<li><p>solved genrealising</p>
+<li><p>solved generalizing</p>
 </li>
-<li><p>each mini bacth switch off a random set of activations</p>
+<li><p>each mini batch switch off a random set of activations</p>
 </li>
 </ul>
 <p>setting up our learn model looks like</p>
@@ -26,14 +25,13 @@
 <li>higher vs lower p value</li>
 </ul>
 <p><strong>Structured Data</strong>, data you would find in tables or data bases.</p>
-<p>Catergorical vs Continuous </p>
-<p>better to change to catergorical</p>
+<p>Categorical vs Continuous, better to change to categorical.</p>
 <p>Setting up our model data looks like</p>
 <pre class="hljs"><code>md = ColumnarModelData.from_data_frame(PATH, val_idx, df, yl, cat_flds=cat_vars, bs=<span class="hljs-number">128</span>, test_df=df_test)</code></pre><p>where</p>
 <ul class="list">
 <li><p><code>md</code> = model data</p>
 </li>
-<li><p><code>df</code>= data frame -&gt; independant variable</p>
+<li><p><code>df</code>= data frame -&gt; independent variable</p>
 </li>
 <li><p><code>yl</code> = dependent</p>
 </li>
@@ -45,11 +43,11 @@
 <ul class="list">
 <li><p><code>m</code> is our learning model</p>
 </li>
-<li><p>emb_szs is see <strong>catergorical</strong> section</p>
+<li><p>emb_szs is see <strong>categorical</strong> section</p>
 </li>
-<li><p><strong>num of continous variables</strong>, just pass in all the df coloumns and subtract the catorigicl varibles</p>
+<li><p><strong>num of continuous variables</strong>, just pass in all the df columns and subtract the categorical variables</p>
 </li>
-<li><p>0.04 is drop out for embediding matrix</p>
+<li><p>0.04 is drop out for embedding matrix</p>
 </li>
 <li><p>1 is how many outputs do we want (we want sales)</p>
 </li>
@@ -58,13 +56,13 @@
 <li><p>drop out in [first,second] linear layer</p>
 </li>
 </ul>
-<p><strong>Catergorical</strong></p>
-<p>Create a new matrix <em>53:36min lesson 4</em> eg: days of the weeek. if we created a new 4x7 vectore matrix. Sunday will be represented by 4 floating point numbers, initially picked at random.</p>
-<p>Turned catogericl in a floating point vector  so we can update them when we use back prob</p>
+<h2 id="categorical"><a class="header-link" href="#categorical"></a>Categorical</h2>
+<p>Create a new matrix <em>53:36min lesson 4</em> eg: days of the week. if we created a new 4x7 vector matrix. Sunday will be represented by 4 floating point numbers, initially picked at random.</p>
+<p>Turned categorical in a floating point vector  so we can update them when we use back prob</p>
 <p>This is called an <strong>embedding matrix</strong> distributed representation.</p>
-<p>Finding the right embedding size. cardiality/2 but less then 50 . Which means, however many catogories you have divide by two, if its greater then 50 , make it 50.</p>
-<p>49min draw some iamges from that</p>
-<h1 id="naturaltal-langauge-processing(nlp)"><a class="header-link" href="#naturaltal-langauge-processing(nlp)"></a>Naturaltal Langauge Processing(NLP)</h1>
+<p>Finding the right embedding size. cardinality/2 but less then 50 . Which means, however many catagories you have divide by two, if its greater then 50 , make it 50.</p>
+<p>49min draw some images from that</p>
+<h2 id="natural-language-processing(nlp)"><a class="header-link" href="#natural-language-processing(nlp)"></a>Natural Language Processing(NLP)</h2>
 <p>Tokenization breaks words into tokens.</p>
 <p>Fastai uses <a href="https://spacy.io/usage/spacy-101">spacy tokenisor</a>.</p>
 <p>Create a field, how we will preprocess text.</p>
@@ -72,9 +70,9 @@
 <p><code>tokenize</code> what tokenizer we are using</p>
 <p>while creating our model data</p>
 <p><code>min_freq=n</code> is any words the occur less then <code>n</code> times dont treat as work.</p>
-<p><strong>Batch size</strong> total amount of data divded into smaller portio eg batch sixe of 64, we dived that size of our data into 64 batches.End up 64 columns by a large number 1:50</p>
+<p><strong>Batch size</strong> total amount of data divided into smaller portion eg batch size of 64, we dived that size of our data into 64 batches.End up 64 columns by a large number 1:50</p>
 <p>get image to display this concept</p>
-<p><code>bptt</code> baack propagation through time . how long of a sentence do we send through to the gpu each time.</p>
+<p><code>bptt</code> back propagation through time . how long of a sentence do we send through to the gpu each time.</p>
 <p><strong><em>vocab</em></strong>, what are the list f unique words that appear.</p>
 <p>map a word to an integer</p>
     </article>
