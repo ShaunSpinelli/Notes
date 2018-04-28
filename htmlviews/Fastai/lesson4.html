@@ -17,19 +17,20 @@
 <ul class="list">
 <li><p>solved genrealising</p>
 </li>
-<li><p>each mini bacth throw a random set of activations</p>
+<li><p>each mini bacth switch off a random set of activations</p>
 </li>
 </ul>
-<p>when setting up our learn model</p>
-<pre class="hljs"><code>learn = ConvLearner.pretrained(arch,data, ps=<span class="hljs-number">0.5</span>, precompute=<span class="hljs-keyword">True</span>)</code></pre><p>In this example <code>ps = 0.5</code> the probability of deleting activation is 50% (turn off half) can pass in array for ps value for each layer.</p>
+<p>setting up our learn model looks like</p>
+<pre class="hljs"><code>learn = ConvLearner.pretrained(arch,data, ps=<span class="hljs-number">0.5</span>, precompute=<span class="hljs-keyword">True</span>)</code></pre><p>In this example <code>ps = 0.5</code> the probability of deleting activation is 50% (turn off half). We can pass in array for ps value for each layer.</p>
 <ul class="list">
 <li>higher vs lower p value</li>
 </ul>
-<p><strong>Structured Data</strong>
-Stuff youd find in data tables
-catergorical vs continuous </p>
+<p><strong>Structured Data</strong>, data you would find in tables or data bases.</p>
+<p>Catergorical vs Continuous </p>
 <p>better to change to catergorical</p>
-<pre class="hljs"><code>md = ColumnarModelData.from_data_frame(PATH, val_idx, df, yl.astype(np.float32), cat_flds=cat_vars, bs=<span class="hljs-number">128</span>, test_df=df_test)</code></pre><ul class="list">
+<p>Setting up our model data looks like</p>
+<pre class="hljs"><code>md = ColumnarModelData.from_data_frame(PATH, val_idx, df, yl, cat_flds=cat_vars, bs=<span class="hljs-number">128</span>, test_df=df_test)</code></pre><p>where</p>
+<ul class="list">
 <li><p><code>md</code> = model data</p>
 </li>
 <li><p><code>df</code>= data frame -&gt; independant variable</p>
@@ -39,8 +40,10 @@ catergorical vs continuous </p>
 <li><p><code>cat_flds=cat_vars</code> = what do we want treated as catorgarical data</p>
 </li>
 </ul>
-<pre class="hljs"><code>m = md.get_learner(emb_szs, len(df.columns)-len(cat_vars),<span class="hljs-number">0.04</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1000</span>,<span class="hljs-number">500</span>], [<span class="hljs-number">0.001</span>,<span class="hljs-number">0.01</span>], y_range=y_range)</code></pre><ul class="list">
-<li><p><code>m</code> is our model</p>
+<p>setting up leaner model</p>
+<pre class="hljs"><code>m = md.get_learner(emb_szs, len(df.columns)-len(cat_vars),<span class="hljs-number">0.04</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1000</span>,<span class="hljs-number">500</span>], [<span class="hljs-number">0.001</span>,<span class="hljs-number">0.01</span>], y_range=y_range)</code></pre><p>where</p>
+<ul class="list">
+<li><p><code>m</code> is our learning model</p>
 </li>
 <li><p>emb_szs is see <strong>catergorical</strong> section</p>
 </li>
@@ -55,24 +58,25 @@ catergorical vs continuous </p>
 <li><p>drop out in [first,second] linear layer</p>
 </li>
 </ul>
-<p><strong>Catergorical</strong>
-create a new matrix <em>53:36min lesson 4</em> eg: days of the weeek. if we created a new 4x7 vectore matrix. Sunday will be represented by 4 floating point numbers, initially picked at random.</p>
-<p>turned catogericl in a floating point vector  so we can update them when we use back prob</p>
-<p>this is called an <strong>embedding matrix</strong> distributed representation.</p>
-<p>finding the right embedding size. cardiality/2 but less then 50 . Which means, however many catogories you have divide by two, if its greater then 50 , make it 50.</p>
-<p>49 drw some iamges from that</p>
+<p><strong>Catergorical</strong></p>
+<p>Create a new matrix <em>53:36min lesson 4</em> eg: days of the weeek. if we created a new 4x7 vectore matrix. Sunday will be represented by 4 floating point numbers, initially picked at random.</p>
+<p>Turned catogericl in a floating point vector  so we can update them when we use back prob</p>
+<p>This is called an <strong>embedding matrix</strong> distributed representation.</p>
+<p>Finding the right embedding size. cardiality/2 but less then 50 . Which means, however many catogories you have divide by two, if its greater then 50 , make it 50.</p>
+<p>49min draw some iamges from that</p>
 <h1 id="naturaltal-langauge-processing(nlp)"><a class="header-link" href="#naturaltal-langauge-processing(nlp)"></a>Naturaltal Langauge Processing(NLP)</h1>
 <p>Tokenization breaks words into tokens.</p>
-<p>fastai uses <a href="https://spacy.io/usage/spacy-101">spacy tokenisor</a>.</p>
-<p>create a field, how we will preprocess text.</p>
+<p>Fastai uses <a href="https://spacy.io/usage/spacy-101">spacy tokenisor</a>.</p>
+<p>Create a field, how we will preprocess text.</p>
 <pre class="hljs"><code>    TEXT = data.Field(lower=<span class="hljs-keyword">True</span>, tokenize=<span class="hljs-string">"spacy"</span>)</code></pre><p><code>lower</code> lower case</p>
 <p><code>tokenize</code> what tokenizer we are using</p>
 <p>while creating our model data</p>
 <p><code>min_freq=n</code> is any words the occur less then <code>n</code> times dont treat as work.</p>
+<p><strong>Batch size</strong> total amount of data divded into smaller portio eg batch sixe of 64, we dived that size of our data into 64 batches.End up 64 columns by a large number 1:50</p>
+<p>get image to display this concept</p>
 <p><code>bptt</code> baack propagation through time . how long of a sentence do we send through to the gpu each time.</p>
 <p><strong><em>vocab</em></strong>, what are the list f unique words that appear.</p>
 <p>map a word to an integer</p>
-<p>#restart lesson at 1:50</p>
     </article>
   </body>
 </html>
