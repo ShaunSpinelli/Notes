@@ -10,7 +10,4 @@ Collaborative filter in movies example. Trying to find out if a user_1 would lik
 
 pytorch module
 
-
-
-
 resume lesson at 30min
