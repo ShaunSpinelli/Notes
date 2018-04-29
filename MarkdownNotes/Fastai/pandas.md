@@ -1,6 +1,45 @@
 # Pandas
 
-Displays All classes
+[Pandas in 10min](https://pandas.pydata.org/pandas-docs/stable/10min.html)
+
+## Object Creation
+
+## Viewing data
+
+## Selecting Data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## from lesson 3
 
 ```python
 data.classes
