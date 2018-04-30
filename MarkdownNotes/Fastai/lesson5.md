@@ -100,6 +100,8 @@ where
 
 * opt is updated our weights
 
+* ``wd`` weight decay , change loss function
+
 
 fastai fit function
 
