@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>5 Steps Nested Attributes</title>
+    <link type="text/css" rel="stylesheet" href="../assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="5-steps-nested-attributes"><a class="header-link" href="#5-steps-nested-attributes"></a>5 Steps Nested Attributes</h1>
+<h2 id="update-multiple-models-from-single-form"><a class="header-link" href="#update-multiple-models-from-single-form"></a>Update multiple models from single form</h2>
+<p><strong>Follow bold numbered sentences for instructions</strong> </p>
+<p>Normal text for brief explanations.</p>
+<p>If we have two models <code>User</code> and <code>Address</code>. Where a <code>User</code> (the parent) has_one <code>address</code> (the child) and we want to create/edit both using one form.</p>
+<p>Our <code>User</code> model contains a <code>name</code>. Our <code>Address</code> model contains a <code>city</code>, <code>state</code> and a <em>foreign key</em> referencing its <strong>parent</strong> the <code>user</code>.</p>
+<p><strong>NB:</strong> Its important we add the reference to the parent model through the child and not the other way around!!!!!</p>
+<p><strong>1) Add <code>accepts_nested_attributes_for: childmodel</code> to the parent model</strong></p>
+<pre class="hljs"><code><span class="hljs-comment"># app/models/user.rb</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> &lt; ActiveRecord::Base</span>
+  <span class="hljs-comment"># ... code from above omitted</span>
+  has_one <span class="hljs-symbol">:address</span>
+  accepts_nested_attributes_for <span class="hljs-symbol">:address</span>
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-comment"># app/models/address.rb</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Address</span> &lt; ActiveRecord::Base</span>
+  belongs_to <span class="hljs-symbol">:user</span>
+<span class="hljs-keyword">end</span>
+</code></pre><p><strong>2) Inside our user form we add this</strong></p>
+<p><strong>NOTE:</strong> <code>f</code> is the local variable that we passed for our main <code>form do |f|</code> Yours might have a different name (eg: form) so you will have to change it keep <code>ff</code> the same.</p>
+<pre class="hljs"><code><span class="hljs-comment">#app/views/_form.html.erb</span>
+&lt;%= f.fields_for <span class="hljs-symbol">:address</span> <span class="hljs-keyword">do</span> <span class="hljs-params">|ff|</span> %&gt;
+  &lt;div&gt;
+    &lt;%= ff.label <span class="hljs-symbol">:city</span> %&gt;
+    &lt;%= ff.text_field <span class="hljs-symbol">:city</span> %&gt;
+  &lt;<span class="hljs-regexp">/div&gt;
+  &lt;div&gt;
+    &lt;%= ff.label :state %&gt;
+    &lt;%= ff.text_field :state %&gt;
+  &lt;/div</span>&gt;
+&lt;% <span class="hljs-keyword">end</span> %&gt;</code></pre><p><strong>3) Create a helper method file called form_helper.rb and add</strong></p>
+<p>Helper method is used so we can create a new address which we need in order to pass through the nested params</p>
+<pre class="hljs"><code><span class="hljs-comment"># app/helpers/form_helper.rb</span>
+<span class="hljs-class"><span class="hljs-keyword">module</span> <span class="hljs-title">FormHelper</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">setup_user</span><span class="hljs-params">(user)</span></span>
+    user.address <span class="hljs-params">||</span>= Address.new
+    user
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre><p><strong>4) Update our main user form by removing the existing <code>form_for do |f|</code>  and adding</strong></p>
+<p>We are calling our <code>setup method</code> so we can create our address model.</p>
+<pre class="hljs"><code><span class="hljs-comment"># app/views/users/_form.html.erb</span>
+&lt;%= form_for(setup_user(user)) <span class="hljs-keyword">do</span> <span class="hljs-params">|f|</span> %&gt;</code></pre><p>We need to white list the additional nested params coming through</p>
+<p><strong>5) Update our permitted params by adding <code>ourmodel_attributes</code> and the attributes it contains</strong></p>
+<pre class="hljs"><code><span class="hljs-comment">#app/controllers/users_controllers.rb</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">user_params</span></span>
+  params.<span class="hljs-keyword">require</span>(<span class="hljs-symbol">:user</span>).permit(<span class="hljs-symbol">:name</span>, <span class="hljs-symbol">address_attributes:</span>[<span class="hljs-symbol">:city</span>,<span class="hljs-symbol">:state</span>])
+<span class="hljs-keyword">end</span>
+</code></pre><h2 id="and-now-you-should-be-golden-!!"><a class="header-link" href="#and-now-you-should-be-golden-!!"></a>And now you should be golden !!</h2>
+    </article>
+  </body>
+</html>
