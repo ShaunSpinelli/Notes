@@ -7,5 +7,11 @@
 * learn.summary()
 
 
+stocahstic gradient decent pass through random batch then update  vs GD pbass through entire training data
 
-panads to feather
+PCA use to look at data
+
+lstm is an improved rnn
+
+linear egression continous
+panads to featheo

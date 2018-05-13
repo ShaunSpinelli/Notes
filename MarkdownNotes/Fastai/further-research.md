@@ -43,3 +43,5 @@ If our validation loss and training set loss are very similar does that mean our
 [Image recogntion](https://towardsdatascience.com/fun-with-small-image-data-sets-part-2-54d683ca8c96)
 
 [How do we train neural nets](https://towardsdatascience.com/how-do-we-train-neural-networks-edd985562b73)
+
+[Checkout this blog](http://colah.github.io/posts/2017-03-Distill/)
