@@ -45,3 +45,5 @@ If our validation loss and training set loss are very similar does that mean our
 [How do we train neural nets](https://towardsdatascience.com/how-do-we-train-neural-networks-edd985562b73)
 
 [Checkout this blog](http://colah.github.io/posts/2017-03-Distill/)
+
+[Optimization for DL Hightlights 2017 Sum.](http://ruder.io/deep-learning-optimization-2017/)
