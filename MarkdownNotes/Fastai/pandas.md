@@ -10,45 +10,18 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## from lesson 3
 
 ```python
 data.classes
 ```
+
 Displays test file name
 
 ```python
 data.test_ds.fnames
 ```
+
 Predictions returned as log so need to unlog them to get probablities
 
 ```python
