@@ -117,4 +117,3 @@ Adding a bias 1:02:40
 
 ```.squeeze``` adds an additional unit axis. (pytorch function) Called broadcasting (we add a vector to a matrix) google **numpy broadcasting**
 
-continue at 140min

@@ -80,6 +80,8 @@ Finding the right embedding size. cardinality/2 but less then 50 . Which means, 
 
 ## Natural Language Processing(NLP)
 
+Language modelling - a model that can predict the next word in a sentence
+
 Tokenization breaks words into tokens.
 
 Fastai uses [spacy tokenisor](https://spacy.io/usage/spacy-101).

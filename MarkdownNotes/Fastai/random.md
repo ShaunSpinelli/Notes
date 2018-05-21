@@ -6,12 +6,14 @@
 
 * learn.summary()
 
+* stochastic gradient decent pass through random batch then update  vs GD pbass through entire training data
 
-stocahstic gradient decent pass through random batch then update  vs GD pbass through entire training data
+* PCA use to look at data
 
-PCA use to look at data
+* lstm is an improved rnn
 
-lstm is an improved rnn
+* linear egression continous
 
-linear egression continous
-panads to featheo
+* panads to featheo
+
+* feature engineering
