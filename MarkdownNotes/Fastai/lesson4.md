@@ -80,7 +80,9 @@ Finding the right embedding size. cardinality/2 but less then 50 . Which means, 
 
 ## Natural Language Processing(NLP)
 
-Language modelling - a model that can predict the next word in a sentence
+**Language modelling** - a model that can predict the next word in a sentence given a few words of a sentence
+
+torch text is pytroches nlp
 
 Tokenization breaks words into tokens.
 
@@ -102,10 +104,10 @@ while creating our model data
 
 **Batch size** total amount of data divided into smaller portion eg batch size of 64, we dived that size of our data into 64 batches.End up 64 columns by a large number 1:50
 
-get image to display this concept
+get image to display this concept (1:48:43) Question at 1:50 about batch size and bptt
 
 ```bptt``` back propagation through time . how long of a sentence do we send through to the gpu each time.
 
-***vocab***, what are the list f unique words that appear.
+**vocab**,  is the list of unique words that appear.
 
 map a word to an integer
