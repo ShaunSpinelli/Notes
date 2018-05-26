@@ -10,6 +10,7 @@
   </head>
   <body>
     <article class="markdown-body"><h1 id="lesson-4"><a class="header-link" href="#lesson-4"></a>Lesson 4</h1>
+<p><a href="http://forums.fast.ai/t/wiki-lesson-4/9402">Lesson 4 Wiki</a></p>
 <p>We&#39;ve been added two fully connected layer by default</p>
 <p>If we want to add a custom amount we can by adding <code>xtra_fc=[]</code> when we set up our learn model.</p>
 <pre class="hljs"><code>learn = ConvLearner.pretrained(arch,data, xtra_fc[])</code></pre><p><strong>DROP OUT</strong> - Default is 0.25 for first and 0.5 for second layer.</p>
@@ -63,6 +64,8 @@
 <p>Finding the right embedding size. cardinality/2 but less then 50 . Which means, however many catagories you have divide by two, if its greater then 50 , make it 50.</p>
 <p>49min draw some images from that</p>
 <h2 id="natural-language-processing(nlp)"><a class="header-link" href="#natural-language-processing(nlp)"></a>Natural Language Processing(NLP)</h2>
+<p><strong>Language modelling</strong> - a model that can predict the next word in a sentence given a few words of a sentence</p>
+<p>torch text is pytroches nlp</p>
 <p>Tokenization breaks words into tokens.</p>
 <p>Fastai uses <a href="https://spacy.io/usage/spacy-101">spacy tokenisor</a>.</p>
 <p>Create a field, how we will preprocess text.</p>
@@ -71,9 +74,9 @@
 <p>while creating our model data</p>
 <p><code>min_freq=n</code> is any words the occur less then <code>n</code> times dont treat as work.</p>
 <p><strong>Batch size</strong> total amount of data divided into smaller portion eg batch size of 64, we dived that size of our data into 64 batches.End up 64 columns by a large number 1:50</p>
-<p>get image to display this concept</p>
+<p>get image to display this concept (1:48:43) Question at 1:50 about batch size and bptt</p>
 <p><code>bptt</code> back propagation through time . how long of a sentence do we send through to the gpu each time.</p>
-<p><strong><em>vocab</em></strong>, what are the list f unique words that appear.</p>
+<p><strong>vocab</strong>,  is the list of unique words that appear.</p>
 <p>map a word to an integer</p>
     </article>
   </body>

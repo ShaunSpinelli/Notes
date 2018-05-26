@@ -10,6 +10,7 @@
   </head>
   <body>
     <article class="markdown-body"><h1 id="lesson-5"><a class="header-link" href="#lesson-5"></a>Lesson 5</h1>
+<p><a href="http://forums.fast.ai/t/wiki-lesson-5/9403">Lesson 5 Wiki</a></p>
 <h2 id="topics"><a class="header-link" href="#topics"></a>Topics</h2>
 <ul class="list">
 <li><p>Matrix&#39;s Decomposition</p>
@@ -58,7 +59,7 @@ n_movies=int(ratings.movieId.nunique())
         u,m = self.u(users),self.m(movies)
         <span class="hljs-keyword">return</span> (u*m).sum(<span class="hljs-number">1</span>)
 </code></pre><p>using <a href="http://www.jefkine.com/deep/2016/08/08/initialization-of-deep-networks-case-of-rectifiers/">Kaiming He initializing</a> to find the starting values for the embedding matrix.</p>
-<p>Actual embedding matrix is not a tensor but a variable but it also does automatic differention</p>
+<p>Actual embedding matrix is not a tensor but a variable but it also does automatic differentiation</p>
 <p>Creating our data</p>
 <pre class="hljs"><code>
 x = ratings.drop([<span class="hljs-string">'rating'</span>, <span class="hljs-string">'timestamp'</span>],axis=<span class="hljs-number">1</span>)
@@ -84,7 +85,6 @@ fit(model, data, <span class="hljs-number">3</span>, opt, F.mse_loss)
 </code></pre><p>We can set our own learning rate annealing  <code>set_lrs(opt, 0.01)</code></p>
 <p>Adding a bias 1:02:40</p>
 <p><code>.squeeze</code> adds an additional unit axis. (pytorch function) Called broadcasting (we add a vector to a matrix) google <strong>numpy broadcasting</strong></p>
-<p>continue at 140min</p>
     </article>
   </body>
 </html>
