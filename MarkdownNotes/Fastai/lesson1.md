@@ -1,9 +1,8 @@
 # Lesson 1- Images Classification using CNN
 
+[Lesson 1 Wiki](http://forums.fast.ai/t/wiki-lesson-1/9398)
 
 * classifier is looking at the a sqaure in the middle of the images
-*
-
 
 ## Definitions
 
@@ -12,7 +11,7 @@
 * **Accuracy** - correct prediction from our test set
 * **TTA** - test time augmentation running augmented images throw cnn to see how well its good
 
-When we backpropagate we use our training set loss 
+When we backpropagate we use our training set loss.
 
 If our validation loss is greater then out training loss our model is **overfitting**.
 
@@ -21,13 +20,9 @@ If our validation loss is greater then out training loss our model is **overfitt
 * **frozen** - not being updated
 * **unfreeze** - being updated
 
+Only training the last one/two layers as the first pre-trained convolution/layers have been trained already and are very good at recognising basic shapes and features. when we want to start fine tuning out network we can start un freezing layer by layer.
 
-
-only traing the last one/two layers as the first pretrained convolution/layers have been trained already and are very goood at recognising basic shapes and features. when we want to start fine tuning out network we can start un freezing layer by layer.
-
-
-We can create an arry of learning rates for each group of layers super low learning rates for layers at the front , middle learning rates for middle layers and bigger learning rates for the last layers.
-
+We can create an array of learning rates for each group of layers super low learning rates for layers at the front , middle learning rates for middle layers and bigger learning rates for the last layers.
 
 ### .fit method
 
@@ -37,10 +32,8 @@ We can create an arry of learning rates for each group of layers super low learn
 
 * reset learning rate after _n_ number of epochs **cycle_len = n**
 
+* If your cycle length is to short, wont find a good spot, it will keep popping out but as you go on you want it to do more and more exploring **need more research**
 
-
-* If your cycle length is to short, wont find a good spot, it will keep popping out but as you go on you want it to do more and more exploring **need more reasearch** 
- 
 **_Insert Image from lesson 1_**
 
 **cycle_mult**  doubles length of cycle after each cycle
@@ -49,25 +42,21 @@ We can create an arry of learning rates for each group of layers super low learn
 
 ### inputs
 
-* inputs to model has to be sqaure
+* inputs to model has to be square
 * just using a square on the validation set, takes the height then crops out the rest
 
+### Choosing a learning rate
 
-### Choosing a leraning rate
-
-_lrf_  uses minibatches to find the optimal leraning rate  
+_lrf_  uses mini-batches to find the optimal learning rate
 
 ### Improving Model Through Data Augmentation
 
+### confusion matrix
 
-### conufsion matrix
-
-* lets us compare our prediction lables and true lables
-
-
-
+* lets us compare our prediction labels and true labels
 
 ## Steps To Train an image Classifier
+
 ---
 
 1. Enable data augmentation, and precompute=True

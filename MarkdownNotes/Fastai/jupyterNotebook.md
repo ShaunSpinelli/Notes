@@ -3,17 +3,21 @@
 launch
 
 ```bash
-    $ jupyter notebook
+    jupyter notebook
 ```
 
 pause notebook from cmd  **ctl+z**
 
-unpause jupyter note book 
+Un-pause jupyter note book
 
 ``` bash
-$ fg  
-``` 
+
+fg
+
+```
 
 then press tab to select jupyter note book
 
-# Short Cuts
+## Short Cuts
+
+- shift tab to see parameters of function

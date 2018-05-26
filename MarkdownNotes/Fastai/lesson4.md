@@ -1,5 +1,7 @@
 # Lesson 4
 
+[Lesson 4 Wiki](http://forums.fast.ai/t/wiki-lesson-4/9402)
+
 We've been added two fully connected layer by default
 
 If we want to add a custom amount we can by adding ```xtra_fc=[]``` when we set up our learn model.

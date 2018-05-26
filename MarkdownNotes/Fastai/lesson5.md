@@ -1,5 +1,7 @@
 # Lesson 5
 
+[Lesson 5 Wiki](http://forums.fast.ai/t/wiki-lesson-5/9403)
+
 ## Topics
 
 * Matrix's Decomposition
@@ -74,7 +76,7 @@ class EmbeddingDot(nn.Module):
 
 using [Kaiming He initializing](http://www.jefkine.com/deep/2016/08/08/initialization-of-deep-networks-case-of-rectifiers/) to find the starting values for the embedding matrix.
 
-Actual embedding matrix is not a tensor but a variable but it also does automatic differention
+Actual embedding matrix is not a tensor but a variable but it also does automatic differentiation
 
 Creating our data
 
@@ -116,4 +118,3 @@ We can set our own learning rate annealing  ```set_lrs(opt, 0.01)```
 Adding a bias 1:02:40
 
 ```.squeeze``` adds an additional unit axis. (pytorch function) Called broadcasting (we add a vector to a matrix) google **numpy broadcasting**
-

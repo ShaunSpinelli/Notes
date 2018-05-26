@@ -1,5 +1,7 @@
 # Lesson 6
 
+[lesson 6 Wiki](http://forums.fast.ai/t/wiki-lesson-6/9404)
+
 ## Movie Lens
 
 PCA- Principle component analysis
