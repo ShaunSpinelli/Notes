@@ -42,6 +42,8 @@ $$s(x)= \frac{e^x}{e^x+1}$$
 
 * structured - database type of structure
 
+
+
 ## Check out
 
 * keras lesson 1 to see lesson one written using keras
