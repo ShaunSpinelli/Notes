@@ -10,10 +10,10 @@ PCA- Principle component analysis
 
 ## SGD (1:00)
 
-## RNN- Recurrent Neural Network (1:09)
+## RNN- Recurrent Neural Network (1:09) 
 
 * long term dependencies -
 
 * stateful representation- where are we now
 
-pick up at 1:35
+

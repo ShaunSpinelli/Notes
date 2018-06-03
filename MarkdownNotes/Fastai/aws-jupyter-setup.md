@@ -33,3 +33,5 @@ $ jupyter notebook
 Copy url and change localhost to 9999 when you paste it in the browser
 
 -L 9999:127.0.0.1:8888
+
+ssh -i your-aws-key-pair-filename.pem -L 9999:127.0.0.1:8888 ubuntu@ec2-34-211-49-97.us-west-2.compute.amazonaws.com
