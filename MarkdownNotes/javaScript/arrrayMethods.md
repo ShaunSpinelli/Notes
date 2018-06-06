@@ -6,19 +6,19 @@ Helpful methods for working with arrays
 
 Array.prototype.forEach()
 
-The forEach() method executes a provided function once for each array element.
+The forEach() method executes a *provided function* once for each array element.
 
 ## Filter
 
 Array.prototype.filter()
 
-The filter() method creates a new array with all elements that pass the test implemented by the provided function.
+The filter() method creates a new array with all elements that pass the test implemented by the *provided function*.
 
 ## Map
 
 Array.prototype.map()
 
-The map() method creates a new array with the results of calling a provided function on every element in the calling array.
+The map() method creates a new array with the results of calling a *provided function* on every element in the calling array.
 
 ## Reduce
 
@@ -33,13 +33,13 @@ Array.prototype.sort()
 ## Some
 
 Array.prototype.some()
-The some() method tests whether at least one element in the array passes the test implemented by the provided function.
+The some() method tests whether at least one element in the array passes the test implemented by the *provided function*.
 
 ## Every
 
 Array.prototype.every()
 
-The every() method tests whether all elements in the array pass the test implemented by the provided function.
+The every() method tests whether all elements in the array pass the test implemented by the *provided function*.
 
 ## Find
 
