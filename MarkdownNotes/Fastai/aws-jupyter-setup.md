@@ -34,14 +34,10 @@ Copy url and change localhost to 9999 when you paste it in the browser
 
 -L 9999:127.0.0.1:8888
 
-ssh -i your-aws-key-pair-filename.pem -L 9999:127.0.0.1:8888 ubuntu@ec2-34-211-49-97.us-west-2.compute.amazonaws.com
+ssh -i your-aws-key-pair-filename.pem -L 9999:127.0.0.1:8888 ubuntu@ec2-34-212-167-27.us-west-2.compute.amazonaws.com
 
-ssh -i your-aws-key-pair-filename.pem -L 9999:127.0.0.1:8888 ubuntu@ec2-34-211-110-147.us-west-2.compute.amazonaws.com
 
 
 
 scp  -i /home/shaun/Documents/Education/FastaiCourse/your-aws-key-pair-filename.pem  TEXT-adam5.pkl ubuntu@ec2-34-211-110-147.us-west-2.compute.amazonaws.com:~/
 
-
-
- ln -s /home/shaun/Documents/Education/FastaiCourse/fastai/fastai fastain
