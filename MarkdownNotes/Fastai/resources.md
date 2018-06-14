@@ -40,6 +40,8 @@ A list of resource compiled during the [Fast.ai](http://www.fast.ai/) course.
 
 [Convolutions](https://towardsdatascience.com/intuitively-understanding-convolutions-for-deep-learning-1f6f42faee1  )
 
+[Convolution arithmetic tutorial](http://deeplearning.net/software/theano/tutorial/conv_arithmetic.html)
+
 ### Structured Data
 
 [Structured Deep Learning](https://towardsdatascience.com/structured-deep-learning-b8ca4138b848)
