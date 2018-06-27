@@ -1,6 +1,4 @@
-# Dog Breeds
-
-[Lesson 2 Wiki](http://forums.fast.ai/t/wiki-lesson-2/9399)
+[Lesson 2 Wiki - With timeline](http://forums.fast.ai/t/wiki-lesson-2/9399)
 
 * batch size, start at 64 till out of memory, then half , and half and half and so on
 
@@ -14,13 +12,6 @@
 
 ---
 
-**tfms** - dfsdaf
-
-- how do we want to transform our model
-
-- can change the train name ```trn_name=```  and validation name ```val_name=``` of files in the ```tfms_from_model``` method and also include the test folder
-
----
 
 **Reading Information from csv** _Lesson 3 34:27_
 
@@ -28,3 +19,11 @@ data=ImageClassifier.from_csv
 
 
 **Using panads for writing txt file** _lesson 3 35:31_
+
+---
+
+Lesson 2 notebook starts at 1:53
+
+satellite images
+
+aws set 1:59
