@@ -8,7 +8,7 @@ A collections of exercises to practice the skills learned in part 1 of the [fast
 
 2) [Dog Breeds](https://www.kaggle.com/c/dog-breed-identification) - Kaggle playground competition
 
-3) Classify different types of fruit  using [this](https://www.kaggle.com/moltean/fruits/data) data set from kaggle.
+3)[Invasive Species](https://www.kaggle.com/c/invasive-species-monitoring) - Kaggle playground competition
 
 ## Natural Language processing
 
