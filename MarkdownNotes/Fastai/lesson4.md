@@ -7,12 +7,12 @@ We've been added two fully connected layer by default
 If we want to add a custom amount we can by adding ```xtra_fc=[]``` when we set up our learn model.
 
 ```python
-learn = ConvLearner.pretrained(arch,data, xtra_fc[])
+learn = ConvLearner.pretrained(arch,data, xtra_fc=  [])
 ```
 
 **DROP OUT** - Default is 0.25 for first and 0.5 for second layer.
 
-* solved generalizing
+* helps model generalise more.
 
 * each mini batch switch off a random set of activations
 
@@ -24,13 +24,21 @@ learn = ConvLearner.pretrained(arch,data, ps=0.5, precompute=True)
 
 In this example ```ps = 0.5``` the probability of deleting activation is 50% (turn off half). We can pass in array for ps value for each layer.
 
+We can pass in an array for different drop on different layers eg: `ps=[0.25,0.5]`
+
 * higher vs lower p value
 
-**Structured Data**, data you would find in tables or data bases.
+## Structured Data, 
+
+Data you would find in tables or data bases.
 
 Categorical vs Continuous, better to change to categorical.
 
-Setting up our model data looks like
+Setting up our model data looks like 
+
+
+fastai proc_df()
+
 
 ```python
 md = ColumnarModelData.from_data_frame(PATH, val_idx, df, yl, cat_flds=cat_vars, bs=128, test_df=df_test)
@@ -38,13 +46,15 @@ md = ColumnarModelData.from_data_frame(PATH, val_idx, df, yl, cat_flds=cat_vars,
 
 where
 
+* PATH  store anything we save from our model
+
 * ```md``` = model data
 
 * ```df```= data frame -> independent variable
 
 * ```yl``` = dependent
 
-* ```cat_flds=cat_vars``` = what do we want treated as catorgarical data
+* ```cat_flds=cat_vars``` - what do we want treated as categorical data
 
 setting up leaner model
 
@@ -68,17 +78,24 @@ where
 
 * drop out in [first,second] linear layer
 
+## Continuous
+
+
+
+
 ## Categorical
 
 Create a new matrix *53:36min lesson 4* eg: days of the week. if we created a new 4x7 vector matrix. Sunday will be represented by 4 floating point numbers, initially picked at random.
 
-Turned categorical in a floating point vector  so we can update them when we use back prob
+Turned categorical in a floating point vector  so we can update them when we use back propagation
 
 This is called an **embedding matrix** distributed representation.
 
 Finding the right embedding size. cardinality/2 but less then 50 . Which means, however many catagories you have divide by two, if its greater then 50 , make it 50.
 
 49min draw some images from that
+
+##
 
 ## Natural Language Processing(NLP)
 

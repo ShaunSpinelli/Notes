@@ -44,14 +44,23 @@ $$s(x)= \frac{e^x}{e^x+1}$$
 ---
 
 `learn.summary()` shows us our model
-
+ 
 ## Structure of Data
 
 ---
 
-* unstructured -all the data is the same thing eg pictures sounds waves
+* unstructured -all the data is the same thing eg pictures, language, sounds waves
 
 * structured - database type of structure
+
+## Structured data
+
+Lesson 3- roossman starts at 2:03
+
+`fastai.structred` for structured data can be used by itself without any fastai packages.
+
+`fast.ai columnar` lets us work with columnar data
+
 
 
 

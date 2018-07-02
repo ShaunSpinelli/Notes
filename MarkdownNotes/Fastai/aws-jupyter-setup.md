@@ -38,6 +38,9 @@ ssh -i your-aws-key-pair-filename.pem -L 9999:127.0.0.1:8888 ubuntu@ec2-34-212-1
 
 
 
+ssh -i your-aws-key-pair-filename.pem -L 9999:127.0.0.1:8888 ubuntu@ec2-54-149-30-143.us-west-2.compute.amazonaws.com
+
+
 
 scp  -i /home/shaun/Documents/Education/FastaiCourse/your-aws-key-pair-filename.pem  TEXT-adam5.pkl ubuntu@ec2-34-211-110-147.us-west-2.compute.amazonaws.com:~/
 
