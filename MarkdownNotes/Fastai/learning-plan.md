@@ -8,7 +8,7 @@ A collections of exercises to practice the skills learned in part 1 of the [fast
 
 2) [Dog Breeds](https://www.kaggle.com/c/dog-breed-identification) - Kaggle playground competition
 
-3)[Invasive Species](https://www.kaggle.com/c/invasive-species-monitoring) - Kaggle playground competition
+3) [Invasive Species](https://www.kaggle.com/c/invasive-species-monitoring) - Kaggle playground competition
 
 ## Natural Language processing
 
@@ -17,3 +17,7 @@ A collections of exercises to practice the skills learned in part 1 of the [fast
 2) * need one ofr sentiment analysis
 
 ## Structured data eg Rossman
+
+## Collaborative filtering
+
+1) [Ten thousand books, six million ratings](https://github.com/zygmuntz/goodbooks-10k)
