@@ -18,7 +18,7 @@ A list of resource compiled during the [Fast.ai](http://www.fast.ai/) course.
 
 [Transfer Learning/Differential LR](https://towardsdatascience.com/transfer-learning-using-differential-learning-rates-638455797f00)
 
-[How do we train neural nets](https://towardsdatascience.com/how-do-we-train-neural-networks-edd985562b73)
+[How do we train neural nets, beginners guide](https://towardsdatascience.com/how-do-we-train-neural-networks-edd985562b73)
 
 [Optimization for DL Hightlights 2017 Sum.](http://ruder.io/deep-learning-optimization-2017/)
 
