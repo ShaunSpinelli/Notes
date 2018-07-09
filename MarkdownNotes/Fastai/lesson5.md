@@ -4,6 +4,8 @@
 
 ## Topics
 
+* Collaborative filtering
+
 * Matrix's Decomposition
 
 * weight decay
@@ -12,7 +14,7 @@ Collaborative filter in movies example. Trying to find out if a user_1 would lik
 
 pytorch module
 
-create a torch tensor **what is a torch tensor**
+create a torch tensor **what is a torch tensor** this the the fast.ai way
 
 ```python
 a = T([[1.,2],[3,4]])
@@ -53,7 +55,7 @@ n_movies=int(ratings.movieId.nunique())
 
 ```
 
-Our user and movie id's have no been mapped to continuos integers
+Our user and movie id's have now been mapped to continuos integers
 
 Creating he embedding matrix
 
@@ -65,7 +67,7 @@ class EmbeddingDot(nn.Module):
         self.u = nn.Embedding(n_users, n_factors)#(rows,columns)
         self.m = nn.Embedding(n_movies, n_factors)
         self.u.weight.data.uniform_(0,0.05) #setting the values in the embedding matrix
-        self.m.weight.data.uniform_(0,0.05) #randomly initalized embbede weight matrices
+        self.m.weight.data.uniform_(0,0.05) #randomly initialized embedded weight matrices (_)sets it place
 
     def forward(self, cats, conts):
         users,movies = cats[:,0],cats[:,1]
@@ -118,3 +120,28 @@ We can set our own learning rate annealing  ```set_lrs(opt, 0.01)```
 Adding a bias 1:02:40
 
 ```.squeeze``` adds an additional unit axis. (pytorch function) Called broadcasting (we add a vector to a matrix) google **numpy broadcasting**
+
+
+bias - 
+
+## Create neural net collaborative filter filter
+
+concat embeddings for movie and user then feed into a neural net
+ _check flow chart at 1:23_
+
+ Are we updating the concated embeddings in our neural net?
+
+
+ ## Optimisers
+
+1:36:30
+
+grades excel doc (read from right to left)
+
+chain rule is back propagation
+
+1) basic - sgd
+
+2) momentum  -  we hae another param we can tune
+
+3) adam - uses momentum  of graident and momentum of gradient  sqaured (expontntialy weighted moving avergae) adaptive learning rate , weight decay
