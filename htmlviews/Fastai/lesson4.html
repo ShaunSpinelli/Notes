@@ -13,30 +13,35 @@
 <p><a href="http://forums.fast.ai/t/wiki-lesson-4/9402">Lesson 4 Wiki</a></p>
 <p>We&#39;ve been added two fully connected layer by default</p>
 <p>If we want to add a custom amount we can by adding <code>xtra_fc=[]</code> when we set up our learn model.</p>
-<pre class="hljs"><code>learn = ConvLearner.pretrained(arch,data, xtra_fc[])</code></pre><p><strong>DROP OUT</strong> - Default is 0.25 for first and 0.5 for second layer.</p>
+<pre class="hljs"><code>learn = ConvLearner.pretrained(arch,data, xtra_fc=  [])</code></pre><p><strong>DROP OUT</strong> - Default is 0.25 for first and 0.5 for second layer.</p>
 <ul class="list">
-<li><p>solved generalizing</p>
+<li><p>helps model generalise more.</p>
 </li>
 <li><p>each mini batch switch off a random set of activations</p>
 </li>
 </ul>
 <p>setting up our learn model looks like</p>
 <pre class="hljs"><code>learn = ConvLearner.pretrained(arch,data, ps=<span class="hljs-number">0.5</span>, precompute=<span class="hljs-keyword">True</span>)</code></pre><p>In this example <code>ps = 0.5</code> the probability of deleting activation is 50% (turn off half). We can pass in array for ps value for each layer.</p>
+<p>We can pass in an array for different drop on different layers eg: <code>ps=[0.25,0.5]</code></p>
 <ul class="list">
 <li>higher vs lower p value</li>
 </ul>
-<p><strong>Structured Data</strong>, data you would find in tables or data bases.</p>
+<h2 id="structured-data,"><a class="header-link" href="#structured-data,"></a>Structured Data,</h2>
+<p>Data you would find in tables or data bases.</p>
 <p>Categorical vs Continuous, better to change to categorical.</p>
-<p>Setting up our model data looks like</p>
+<p>Setting up our model data looks like </p>
+<p>fastai proc_df()</p>
 <pre class="hljs"><code>md = ColumnarModelData.from_data_frame(PATH, val_idx, df, yl, cat_flds=cat_vars, bs=<span class="hljs-number">128</span>, test_df=df_test)</code></pre><p>where</p>
 <ul class="list">
+<li><p>PATH  store anything we save from our model</p>
+</li>
 <li><p><code>md</code> = model data</p>
 </li>
 <li><p><code>df</code>= data frame -&gt; independent variable</p>
 </li>
 <li><p><code>yl</code> = dependent</p>
 </li>
-<li><p><code>cat_flds=cat_vars</code> = what do we want treated as catorgarical data</p>
+<li><p><code>cat_flds=cat_vars</code> - what do we want treated as categorical data</p>
 </li>
 </ul>
 <p>setting up leaner model</p>
@@ -57,12 +62,14 @@
 <li><p>drop out in [first,second] linear layer</p>
 </li>
 </ul>
+<h2 id="continuous"><a class="header-link" href="#continuous"></a>Continuous</h2>
 <h2 id="categorical"><a class="header-link" href="#categorical"></a>Categorical</h2>
 <p>Create a new matrix <em>53:36min lesson 4</em> eg: days of the week. if we created a new 4x7 vector matrix. Sunday will be represented by 4 floating point numbers, initially picked at random.</p>
-<p>Turned categorical in a floating point vector  so we can update them when we use back prob</p>
+<p>Turned categorical in a floating point vector  so we can update them when we use back propagation</p>
 <p>This is called an <strong>embedding matrix</strong> distributed representation.</p>
 <p>Finding the right embedding size. cardinality/2 but less then 50 . Which means, however many catagories you have divide by two, if its greater then 50 , make it 50.</p>
 <p>49min draw some images from that</p>
+<p>##</p>
 <h2 id="natural-language-processing(nlp)"><a class="header-link" href="#natural-language-processing(nlp)"></a>Natural Language Processing(NLP)</h2>
 <p><strong>Language modelling</strong> - a model that can predict the next word in a sentence given a few words of a sentence</p>
 <p>torch text is pytroches nlp</p>

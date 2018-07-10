@@ -36,3 +36,11 @@ weight decay l2 reg etc
 linear interpolation
 
 chain rule
+
+## Lesson 6
+
+---
+
+questions
+
+learner.fit vs fit(model)

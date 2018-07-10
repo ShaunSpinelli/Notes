@@ -13,6 +13,8 @@
 <p><a href="http://forums.fast.ai/t/wiki-lesson-5/9403">Lesson 5 Wiki</a></p>
 <h2 id="topics"><a class="header-link" href="#topics"></a>Topics</h2>
 <ul class="list">
+<li><p>Collaborative filtering</p>
+</li>
 <li><p>Matrix&#39;s Decomposition</p>
 </li>
 <li><p>weight decay</p>
@@ -20,7 +22,7 @@
 </ul>
 <p>Collaborative filter in movies example. Trying to find out if a user_1 would like a movie. Did other people who like similar movies to user_1 like this movie and  movies that were liked by people like user_1.</p>
 <p>pytorch module</p>
-<p>create a torch tensor <strong>what is a torch tensor</strong></p>
+<p>create a torch tensor <strong>what is a torch tensor</strong> this the the fast.ai way</p>
 <pre class="hljs"><code>a = T([[<span class="hljs-number">1.</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]])
 b = T([[<span class="hljs-number">2.</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">10</span>,<span class="hljs-number">10</span>]])</code></pre><p>where <code>a</code> and <code>b</code> are torch tensors</p>
 <p> building a neural net layer , <strong>pytorch module</strong></p>
@@ -43,7 +45,7 @@ ratings.movieId = ratings.movieId.apply(<span class="hljs-keyword">lambda</span>
 
 n_users=int(ratings.userId.nunique())
 n_movies=int(ratings.movieId.nunique())
-</code></pre><p>Our user and movie id&#39;s have no been mapped to continuos integers</p>
+</code></pre><p>Our user and movie id&#39;s have now been mapped to continuos integers</p>
 <p>Creating he embedding matrix</p>
 <pre class="hljs"><code>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EmbeddingDot</span><span class="hljs-params">(nn.Module)</span>:</span>
@@ -52,7 +54,7 @@ n_movies=int(ratings.movieId.nunique())
         self.u = nn.Embedding(n_users, n_factors)<span class="hljs-comment">#(rows,columns)</span>
         self.m = nn.Embedding(n_movies, n_factors)
         self.u.weight.data.uniform_(<span class="hljs-number">0</span>,<span class="hljs-number">0.05</span>) <span class="hljs-comment">#setting the values in the embedding matrix</span>
-        self.m.weight.data.uniform_(<span class="hljs-number">0</span>,<span class="hljs-number">0.05</span>) <span class="hljs-comment">#randomly initalized embbede weight matrices</span>
+        self.m.weight.data.uniform_(<span class="hljs-number">0</span>,<span class="hljs-number">0.05</span>) <span class="hljs-comment">#randomly initialized embedded weight matrices (_)sets it place</span>
 
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(self, cats, conts)</span>:</span>
         users,movies = cats[:,<span class="hljs-number">0</span>],cats[:,<span class="hljs-number">1</span>]
@@ -85,6 +87,18 @@ fit(model, data, <span class="hljs-number">3</span>, opt, F.mse_loss)
 </code></pre><p>We can set our own learning rate annealing  <code>set_lrs(opt, 0.01)</code></p>
 <p>Adding a bias 1:02:40</p>
 <p><code>.squeeze</code> adds an additional unit axis. (pytorch function) Called broadcasting (we add a vector to a matrix) google <strong>numpy broadcasting</strong></p>
+<p>bias - </p>
+<h2 id="create-neural-net-collaborative-filter-filter"><a class="header-link" href="#create-neural-net-collaborative-filter-filter"></a>Create neural net collaborative filter filter</h2>
+<p>concat embeddings for movie and user then feed into a neural net
+ <em>check flow chart at 1:23</em></p>
+<p> Are we updating the concated embeddings in our neural net?</p>
+<h2 id="optimisers"><a class="header-link" href="#optimisers"></a>Optimisers</h2>
+<p>1:36:30</p>
+<p>grades excel doc (read from right to left)</p>
+<p>chain rule is back propagation</p>
+<p>1) basic - sgd</p>
+<p>2) momentum  -  we hae another param we can tune</p>
+<p>3) adam - uses momentum  of graident and momentum of gradient  sqaured (expontntialy weighted moving avergae) adaptive learning rate , weight decay</p>
     </article>
   </body>
 </html>

@@ -2,11 +2,11 @@
 
 [lesson 6 Wiki](http://forums.fast.ai/t/wiki-lesson-6/9404)
 
-## Movie Lens
+## Movie Lens, Bias
+
 
 PCA- Principle component analysis
 
-## Entity embedding of categorical data
 
 ## SGD (1:00)
 
