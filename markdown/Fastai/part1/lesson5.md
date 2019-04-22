@@ -122,7 +122,7 @@ Adding a bias 1:02:40
 ```.squeeze``` adds an additional unit axis. (pytorch function) Called broadcasting (we add a vector to a matrix) google **numpy broadcasting**
 
 
-bias - 
+bias -
 
 ## Create neural net collaborative filter filter
 
@@ -132,7 +132,7 @@ concat embeddings for movie and user then feed into a neural net
  Are we updating the concated embeddings in our neural net?
 
 
- ## Optimisers
+## Optimisers
 
 1:36:30
 

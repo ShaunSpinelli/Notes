@@ -81,8 +81,6 @@ where
 ## Continuous
 
 
-
-
 ## Categorical
 
 Create a new matrix *53:36min lesson 4* eg: days of the week. if we created a new 4x7 vector matrix. Sunday will be represented by 4 floating point numbers, initially picked at random.

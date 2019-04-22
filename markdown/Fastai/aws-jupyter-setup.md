@@ -11,7 +11,7 @@ Run from fast ai folder where pem file is stored
 $ ssh -i your-aws-key-pair-filename.pem -L 9999:127.0.0.1:8888 ubuntu@ec2-34-216-178-210.us-west-2.compute.amazonaws.com
 ```
 note if there is an error for unsecured pem file
-run 
+run
 ```bash
 $ chmod 400 your-aws-key-pair-filename.pem
 ```
@@ -36,6 +36,7 @@ Copy url and change localhost to 9999 when you paste it in the browser
 
 ssh -i your-aws-key-pair-filename.pem -L 9999:127.0.0.1:8888 ubuntu@ec2-34-212-174-211.us-west-2.compute.amazonaws.com
 
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html
 
 
 ssh -i your-aws-key-pair-filename.pem -L 9999:127.0.0.1:8888 ubuntu@ec2-54-149-30-143.us-west-2.compute.amazonaws.com
