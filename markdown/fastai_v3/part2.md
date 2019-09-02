@@ -1,4 +1,4 @@
-# FastAi Part 2 
+# FastAi Part 2
 
 ## Lesson one
 
@@ -14,11 +14,11 @@ Pull out some keys ideas from papers
 
 ### Basic training loop
 
-feed data into model, Get predictions, Calculate loss from predictions using a loss function, Backward pass( to do what?? compaute the gradeiant), subtract gradients * learning rate from parameters of the model. repeat. Why does this work?
+feed data into model, Get predictions, Calculate loss from predictions using a loss function, Backward pass( to do what?? compute the gradient), subtract gradients * learning rate from parameters of the model. repeat. Why does this work?
 
 #### Forward pass
 
-#### Backward pass 
+#### Backward pass
 
 gradients, chain rule
 
