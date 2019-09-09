@@ -27,4 +27,28 @@ correlation - results in a number  lies in a range from -1 to 1. 1 indicates pos
 
 `np.mean((x - xmean)*(y-ymean))/ np.sqrt(np.mean(np.square(x-mean))* np.mean(np.square(y-ymean)))`
 
-``
+## Loss
+
+Softmax vs binary loss
+
+softmax assumes there is always a class present in the image and
+?? will always look to maximise a prediction?? .This becomes and issue when data contains muliple classes or no classes.
+
+muliti-label binary classification is the likelehood that data contains a class and is independent
+from the other class logits. You can have two classes with the same likilehood in a sample.
+
+## Callbacks and hooks
+
+using callbacks and hooks to inspect model activations including the
+
+## Nomralisation in the model
+
+Why do we need to do it?
+
+**Types:**
+- Batch norm [Paper](https://arxiv.org/pdf/1502.03167.pdf)
+- Layer norm
+- Instance norm
+- Group norm [Paper](https://arxiv.org/pdf/1803.08494.pdf)
+
+Jermeys running-batch-norm
