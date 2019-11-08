@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Lesson 4</title>
+    <link type="text/css" rel="stylesheet" href="../../assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="../../assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="../../assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="lesson-4"><a class="header-link" href="#lesson-4"></a>Lesson 4</h1>
+<p><a href="http://forums.fast.ai/t/wiki-lesson-4/9402">Lesson 4 Wiki</a></p>
+<p>We&#39;ve been added two fully connected layer by default</p>
+<p>If we want to add a custom amount we can by adding <code>xtra_fc=[]</code> when we set up our learn model.</p>
+<pre class="hljs"><code>learn = ConvLearner.pretrained(arch,data, xtra_fc=  [])</code></pre><p><strong>DROP OUT</strong> - Default is 0.25 for first and 0.5 for second layer.</p>
+<ul class="list">
+<li><p>helps model generalise more.</p>
+</li>
+<li><p>each mini batch switch off a random set of activations</p>
+</li>
+</ul>
+<p>setting up our learn model looks like</p>
+<pre class="hljs"><code>learn = ConvLearner.pretrained(arch,data, ps=<span class="hljs-number">0.5</span>, precompute=<span class="hljs-keyword">True</span>)</code></pre><p>In this example <code>ps = 0.5</code> the probability of deleting activation is 50% (turn off half). We can pass in array for ps value for each layer.</p>
+<p>We can pass in an array for different drop on different layers eg: <code>ps=[0.25,0.5]</code></p>
+<ul class="list">
+<li>higher vs lower p value</li>
+</ul>
+<h2 id="structured-data,"><a class="header-link" href="#structured-data,"></a>Structured Data,</h2>
+<p>Data you would find in tables or data bases.</p>
+<p>Categorical vs Continuous, better to change to categorical.</p>
+<p>Setting up our model data looks like </p>
+<p>fastai proc_df()</p>
+<pre class="hljs"><code>md = ColumnarModelData.from_data_frame(PATH, val_idx, df, yl, cat_flds=cat_vars, bs=<span class="hljs-number">128</span>, test_df=df_test)</code></pre><p>where</p>
+<ul class="list">
+<li><p>PATH  store anything we save from our model</p>
+</li>
+<li><p><code>md</code> = model data</p>
+</li>
+<li><p><code>df</code>= data frame -&gt; independent variable</p>
+</li>
+<li><p><code>yl</code> = dependent</p>
+</li>
+<li><p><code>cat_flds=cat_vars</code> - what do we want treated as categorical data</p>
+</li>
+</ul>
+<p>setting up leaner model</p>
+<pre class="hljs"><code>m = md.get_learner(emb_szs, len(df.columns)-len(cat_vars),<span class="hljs-number">0.04</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1000</span>,<span class="hljs-number">500</span>], [<span class="hljs-number">0.001</span>,<span class="hljs-number">0.01</span>], y_range=y_range)</code></pre><p>where</p>
+<ul class="list">
+<li><p><code>m</code> is our learning model</p>
+</li>
+<li><p>emb_szs is see <strong>categorical</strong> section</p>
+</li>
+<li><p><strong>num of continuous variables</strong>, just pass in all the df columns and subtract the categorical variables</p>
+</li>
+<li><p>0.04 is drop out for embedding matrix</p>
+</li>
+<li><p>1 is how many outputs do we want (we want sales)</p>
+</li>
+<li><p>activations in [first,second] linear layer</p>
+</li>
+<li><p>drop out in [first,second] linear layer</p>
+</li>
+</ul>
+<h2 id="continuous"><a class="header-link" href="#continuous"></a>Continuous</h2>
+<h2 id="categorical"><a class="header-link" href="#categorical"></a>Categorical</h2>
+<p>Create a new matrix <em>53:36min lesson 4</em> eg: days of the week. if we created a new 4x7 vector matrix. Sunday will be represented by 4 floating point numbers, initially picked at random.</p>
+<p>Turned categorical in a floating point vector  so we can update them when we use back propagation</p>
+<p>This is called an <strong>embedding matrix</strong> distributed representation.</p>
+<p>Finding the right embedding size. cardinality/2 but less then 50 . Which means, however many catagories you have divide by two, if its greater then 50 , make it 50.</p>
+<p>49min draw some images from that</p>
+<p>##</p>
+<h2 id="natural-language-processing(nlp)"><a class="header-link" href="#natural-language-processing(nlp)"></a>Natural Language Processing(NLP)</h2>
+<p><strong>Language modelling</strong> - a model that can predict the next word in a sentence given a few words of a sentence</p>
+<p>torch text is pytroches nlp</p>
+<p>Tokenization breaks words into tokens.</p>
+<p>Fastai uses <a href="https://spacy.io/usage/spacy-101">spacy tokenisor</a>.</p>
+<p>Create a field, how we will preprocess text.</p>
+<pre class="hljs"><code>    TEXT = data.Field(lower=<span class="hljs-keyword">True</span>, tokenize=<span class="hljs-string">"spacy"</span>)</code></pre><p><code>lower</code> lower case</p>
+<p><code>tokenize</code> what tokenizer we are using</p>
+<p>while creating our model data</p>
+<p><code>min_freq=n</code> is any words the occur less then <code>n</code> times dont treat as work.</p>
+<p><strong>Batch size</strong> total amount of data divided into smaller portion eg batch size of 64, we dived that size of our data into 64 batches.End up 64 columns by a large number 1:50</p>
+<p>get image to display this concept (1:48:43) Question at 1:50 about batch size and bptt</p>
+<p><code>bptt</code> back propagation through time . how long of a sentence do we send through to the gpu each time.</p>
+<p><strong>vocab</strong>,  is the list of unique words that appear.</p>
+<p>map a word to an integer</p>
+    </article>
+  </body>
+</html>

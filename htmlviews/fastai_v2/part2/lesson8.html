@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Lesson 8</title>
+    <link type="text/css" rel="stylesheet" href="../../assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="../../assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="../../assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="lesson-8"><a class="header-link" href="#lesson-8"></a>Lesson 8</h1>
+<h2 id="key-point"><a class="header-link" href="#key-point"></a>key point</h2>
+<ul class="list">
+<li><p>ipyhton debugger</p>
+</li>
+<li><p>create rich conv structures</p>
+</li>
+<li><p>batchnorm</p>
+</li>
+</ul>
+<p>part 1</p>
+<p>transfer learning</p>
+<p>overfitting - more data, data augmentation, generalizable arch, regularization, reduce arc complexity</p>
+<p>embeddings </p>
+<p>data set dl </p>
+<pre class="hljs"><code>    <span class="hljs-built_in">cd</span> ~/fastai/courses/dl2
+    ln <span class="hljs-_">-s</span> ~/data data &amp;&amp; <span class="hljs-built_in">cd</span> <span class="hljs-variable">$_</span>
+    mkdir pascal &amp;&amp; <span class="hljs-built_in">cd</span> <span class="hljs-variable">$_</span>
+    curl -OL http://pjreddie.com/media/files/VOCtrainval_06-Nov-2007.tar
+    curl -OL https://storage.googleapis.com/coco-dataset/external/PASCAL_VOC.zip
+    tar -xf VOCtrainval_06-Nov-2007.tar
+    unzip PASCAL_VOC.zip
+    mv PASCAL_VOC/*.json .
+    rmdir PASCAL_VOC
+</code></pre>    </article>
+  </body>
+</html>

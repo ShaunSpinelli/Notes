@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Notes</title>
+    <link type="text/css" rel="stylesheet" href="../assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="notes"><a class="header-link" href="#notes"></a>Notes</h1>
+<p>Rough notes</p>
+<ul class="list">
+<li>overview of callbacks</li>
+<li>partial python function <a href="https://docs.python.org/2/library/functools.html#functools.partial">docs</a></li>
+</ul>
+<h2 id="variance"><a class="header-link" href="#variance"></a>Variance</h2>
+<ul class="list">
+<li><p>how far a data point is from the mean</p>
+</li>
+<li><p>Different ways to measure variance</p>
+</li>
+</ul>
+<p>variance - how far is the value from the mean, square that to get rid of negatives
+<code>np.mean(np.square(x-mean))</code></p>
+<p>standard deviation (std) - more sensitive to outlier because you are squaring values
+`np.sqrt(np.mean(np.square(x-mean)))</p>
+<p>mean absolute deviation - instead of multiplying to get rid of the negatives we just take there absolute values,
+<code>np.mean(np.absolute(x-mean))</code></p>
+<p>covarince - tells us if variables are positively or neagative correlated there is no mean atributed
+to the  size of the result. <code>np.mean((x - xmean)*(y-ymean))</code> to solve this enter <strong>correlation</strong></p>
+<p>correlation - results in a number  lies in a range from -1 to 1. 1 indicates posiitve correlation, -1 a negative correlation</p>
+<p><code>np.mean((x - xmean)*(y-ymean))/ np.sqrt(np.mean(np.square(x-mean))* np.mean(np.square(y-ymean)))</code></p>
+<h2 id="loss"><a class="header-link" href="#loss"></a>Loss</h2>
+<p>Softmax vs binary loss</p>
+<p>softmax assumes there is always a class present in the image and
+?? will always look to maximise a prediction?? .This becomes and issue when data contains muliple classes or no classes.</p>
+<p>muliti-label binary classification is the likelehood that data contains a class and is independent
+from the other class logits. You can have two classes with the same likilehood in a sample.</p>
+<h2 id="callbacks-and-hooks"><a class="header-link" href="#callbacks-and-hooks"></a>Callbacks and hooks</h2>
+<p>using callbacks and hooks to inspect model activations including the</p>
+<h2 id="nomralisation-in-the-model"><a class="header-link" href="#nomralisation-in-the-model"></a>Nomralisation in the model</h2>
+<p>Why do we need to do it?</p>
+<p><strong>Types:</strong></p>
+<ul class="list">
+<li>Batch norm <a href="https://arxiv.org/pdf/1502.03167.pdf">Paper</a></li>
+<li>Layer norm</li>
+<li>Instance norm</li>
+<li>Group norm <a href="https://arxiv.org/pdf/1803.08494.pdf">Paper</a></li>
+</ul>
+<p>Jermeys running-batch-norm</p>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Lesson 1- Images Classification using CNN</title>
+    <link type="text/css" rel="stylesheet" href="../../assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="../../assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="../../assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="lesson-1--images-classification-using-cnn"><a class="header-link" href="#lesson-1--images-classification-using-cnn"></a>Lesson 1- Images Classification using CNN</h1>
+<p><a href="http://forums.fast.ai/t/wiki-lesson-1/9398">Lesson 1 Wiki</a></p>
+<ul class="list">
+<li>classifier is looking at the a sqaure in the middle of the images</li>
+</ul>
+<h2 id="definitions"><a class="header-link" href="#definitions"></a>Definitions</h2>
+<ul class="list">
+<li><strong>Training Set Loss</strong> - Error from on training set</li>
+<li><strong>Validation Loss</strong> -  Error from on validation set</li>
+<li><strong>Accuracy</strong> - correct prediction from our test set</li>
+<li><strong>TTA</strong> - test time augmentation running augmented images throw cnn to see how well its good</li>
+</ul>
+<p>When we backpropagate we use our training set loss.</p>
+<p>If our validation loss is greater then out training loss our model is <strong>overfitting</strong>.</p>
+<h3 id=".fit-method"><a class="header-link" href="#.fit-method"></a>.fit method</h3>
+<p><strong>Cylcle_len</strong></p>
+<ul class="list">
+<li>decrease our learning rate as we train <em>learning rate annealing</em> we use <strong>cosine-annealing</strong> when ever we add <code>cycle_len=</code> to the .fit method params. We can use cosine-annealing to find a more generalise minima by doing _CA_ n times over a number of iterations.</li>
+</ul>
+<p><strong><em>Insert Image from lesson 1 of cosine annealing</em></strong></p>
+<ul class="list">
+<li><p>reset learning rate after _n_ number of epochs <strong>cycle_len = n</strong></p>
+</li>
+<li><p>If your cycle length is to short, wont find a good spot, it will keep popping out but as you go on you want it to do more and more exploring <strong>need more research</strong></p>
+</li>
+</ul>
+<p><strong><em>Insert Image from lesson 2 35:01</em></strong></p>
+<p>cycle_mult doubling the length of cycle after each cycle <strong>insert image lesson2 53:30</strong></p>
+<h3 id="inputs"><a class="header-link" href="#inputs"></a>inputs</h3>
+<ul class="list">
+<li>inputs to model has to be square</li>
+<li>just using a square on the validation set, takes the height then crops out the rest</li>
+</ul>
+<h3 id="choosing-a-learning-rate"><a class="header-link" href="#choosing-a-learning-rate"></a>Choosing a learning rate</h3>
+<p>What is a learning rate?</p>
+<p><code>lrf</code> uses mini-batches to find the optimal learning rate</p>
+<h3 id="improving-model-through-data-augmentation"><a class="header-link" href="#improving-model-through-data-augmentation"></a>Improving Model Through Data Augmentation</h3>
+<p>Allows us to further train our model on images the have been augmented, so essentially the model is trained on new images.</p>
+<p><strong>insert image</strong>-hi</p>
+<p><strong>tfms</strong> - we can transform images different ways.</p>
+<p><code>aug_tfms=</code> can have <code>transform_side_on</code> <code>or transform_top_down</code></p>
+<p>-how do we want to transform our model</p>
+<p>We need to set pre-compute to false for the data augmentation to work</p>
+<p>-can change the train name <code>trn_name=</code>  and validation name <code>val_name=</code> of files in the <code>tfms_from_model</code> method and also include the test folder</p>
+<h3 id="pre-compute"><a class="header-link" href="#pre-compute"></a>Pre-compute</h3>
+<p>need further explanation</p>
+<h3 id="freezing-layers"><a class="header-link" href="#freezing-layers"></a>freezing layers</h3>
+<ul class="list">
+<li><strong>frozen</strong> - not being updated</li>
+<li><strong>unfreeze</strong> - being updated</li>
+</ul>
+<p>Only training the last one/two layers as the first pre-trained convolution/layers have been trained already and are very good at recognising basic shapes and features. when we want to start fine tuning out network we can start un freezing layer by layer.</p>
+<p>We can create an array of learning rates for each group of layers super low learning rates for layers at the front , middle learning rates for middle layers and bigger learning rates for the last layers.</p>
+<pre class="hljs"><code>learn.unfreeze()
+
+lr = np.array[<span class="hljs-number">1e-4</span>,<span class="hljs-number">1e-3</span>,<span class="hljs-number">1e-2</span>]</code></pre><h3 id="using-test-time-augmentation"><a class="header-link" href="#using-test-time-augmentation"></a>using test time augmentation</h3>
+<p><code>learn.TT()</code> actually augmenting the test images incase key features are being cropped out</p>
+<h3 id="confusion-matrix"><a class="header-link" href="#confusion-matrix"></a>confusion matrix</h3>
+<ul class="list">
+<li><p>lets us compare our prediction labels and true labels</p>
+</li>
+<li><p>if we have lots of classes we can see which of a classes are having bad predictions</p>
+</li>
+</ul>
+<h2 id="steps-to-train-an-image-classifier"><a class="header-link" href="#steps-to-train-an-image-classifier"></a>Steps To Train an image Classifier</h2>
+<ol class="list">
+<li>Enable data augmentation, and precompute=True</li>
+<li>Use lr_find() to find highest learning rate where loss is still clearly improving</li>
+<li>Train last layer from precomputed activations for 1-2 epochs</li>
+<li>Train last layer with data augmentation (i.e. precompute=False) for 2-3 epochs with cycle_len=1</li>
+<li>Unfreeze all layers</li>
+<li>Set earlier layers to 3x-10x lower learning rate than next higher layer</li>
+<li>Use lr_find() again</li>
+<li>Train full network with cycle_mult=2 until over-fitting</li>
+</ol>
+<hr>
+<h2 id="dog-breeds---kaggle-playground-comp---starts-at-1:18"><a class="header-link" href="#dog-breeds---kaggle-playground-comp---starts-at-1:18"></a>Dog Breeds - Kaggle playground comp - starts at 1:18</h2>
+<p>brief on pandas</p>
+<p>increase size of image from data set lesson 2 1:33</p>
+<h2 id="different-architectures"><a class="header-link" href="#different-architectures"></a>different architectures</h2>
+    </article>
+  </body>
+</html>

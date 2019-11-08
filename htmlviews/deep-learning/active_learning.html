@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Active Learning</title>
+    <link type="text/css" rel="stylesheet" href="../assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="active-learning"><a class="header-link" href="#active-learning"></a>Active Learning</h1>
+<h3 id="uncertainty-sampling"><a class="header-link" href="#uncertainty-sampling"></a>Uncertainty sampling</h3>
+<p><a href="https://livebook.manning.com/book/human-in-the-loop-machine-learning/chapter-3">Human in the loop chapter</a></p>
+<p><strong>Least confidence:</strong> where the model selects those instances with the lowest confidence level to be labelled next.</p>
+<p><strong>Margin  sampling:</strong> select instances where the margin between the two most likely labels is narrow, meaning that the classifier is struggling to differentiate between those two most likely classes.</p>
+<h3 id="representative-strategy"><a class="header-link" href="#representative-strategy"></a>Representative strategy</h3>
+<p>Information density in sample mean absolute difference or standard deviation between class size in crop</p>
+<h2 id="papers"><a class="header-link" href="#papers"></a>Papers</h2>
+<p><a href="https://arxiv.org/pdf/1606.09029.pdf">Geometry in active learning for binary and multi-class image segmentation</a></p>
+<p>(1) maximum entropy of posterior probability distribution over classes, 
+(2) minimal probability of selected class and 
+(3) minimal gap between the two most probable classes. </p>
+<p><a href="https://www.kdnuggets.com/2018/10/introduction-active-learning.html">Article</a></p>
+    </article>
+  </body>
+</html>

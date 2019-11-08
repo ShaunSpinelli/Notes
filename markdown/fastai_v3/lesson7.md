@@ -11,7 +11,7 @@
 
 [Densely Connected Convolutional Networks(densenet)](https://arxiv.org/pdf/1608.06993.pdf)
 
-[Aggregated Residual Transformations for Deep Neural Networks(renext)](https://arxiv.org/pdf/1611.05431.pdf)
+[Aggregated Residual Transformations for Deep Neural Networks(resnext)](https://arxiv.org/pdf/1611.05431.pdf)
 
 ## Concepts
 
